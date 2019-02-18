@@ -1,0 +1,6 @@
+framework module Pods_KnowTT {
+  umbrella header "Pods-KnowTT-umbrella.h"
+
+  export *
+  module * { export * }
+}
