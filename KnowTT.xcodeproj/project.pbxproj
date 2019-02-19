@@ -60,6 +60,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4003C66B221BB8B5009B9EC4 /* UserHome */ = {
+			isa = PBXGroup;
+			children = (
+				4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */,
+			);
+			path = UserHome;
+			sourceTree = "<group>";
+		};
 		4036DC10221A09C100BD8671 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,15 +99,15 @@
 		408E46312217737100E98992 /* KnowTT */ = {
 			isa = PBXGroup;
 			children = (
+				408E46362217737100E98992 /* Main.storyboard */,
+				4003C66B221BB8B5009B9EC4 /* UserHome */,
 				4036DC10221A09C100BD8671 /* Authentication */,
 				408E46322217737100E98992 /* AppDelegate.swift */,
-				408E46362217737100E98992 /* Main.storyboard */,
 				408E463C2217737200E98992 /* Assets.xcassets */,
 				408E463E2217737200E98992 /* LaunchScreen.storyboard */,
 				408E46412217737200E98992 /* Info.plist */,
 				408E46392217737100E98992 /* UCSellB.xcdatamodeld */,
 				408E464F22193F9C00E98992 /* enhancingUIView.swift */,
-				4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */,
 				40C08C70221B64F600804E5E /* GoogleService-Info.plist */,
 			);
 			path = KnowTT;
@@ -196,6 +204,9 @@
 				"${PODS_ROOT}/Target Support Files/Pods-KnowTT/Pods-KnowTT-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSocket/SwiftSocket.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -205,6 +216,9 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSocket.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);

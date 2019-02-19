@@ -9,5 +9,6 @@ target 'KnowTT' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-
+  pod 'Socket.IO-Client-Swift', '~> 14.0.0'
+  pod 'SwiftSocket'
 end
