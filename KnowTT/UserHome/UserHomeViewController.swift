@@ -44,18 +44,17 @@ class UserHomeViewController: UIViewController{
     
     @IBAction func connectTapped(_ sender: Any) {
         
-        //let socket = manager.defaultSocket
-        //socket.connect()
+
         
         //TCPswiftSocket------Down
-        let client = TCPClient(address: "128.111.43.14", port: 5057)
+        let client = TCPClient(address: "142.93.204.52", port: 8080)
         switch client.connect(timeout: 1) {
         case .success:
+            print("IOs App succesfully connected to Server")
             switch client.send(string: "Goooooooteeeeeemmmmm" ) {
             case .success:
                 guard let data = client.read(1024*10) else
                 {
-                    print("error guapo")
                     return
                 }
                 

@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="knowBackground" translatesAutoresizingMaskIntoConstraints="NO" id="xQw-IU-mWh">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pinkbackgrund" translatesAutoresizingMaskIntoConstraints="NO" id="xQw-IU-mWh">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-fg-WBH">
@@ -64,14 +64,16 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-mL-a6j">
                                                 <rect key="frame" x="0.0" y="37" width="247" height="34"/>
-                                                <color key="backgroundColor" red="0.81006305320000005" green="0.69528660499999995" blue="0.16619292090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" red="0.93048757314682007" green="0.19205617904663086" blue="0.91656571626663208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="KohinoorBangla-Regular" family="Kohinoor Bangla" pointSize="17"/>
                                                 <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="New Member">
                                                     <color key="titleColor" red="0.98703104257583618" green="0.99118095636367798" blue="0.99518650770187378" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="lAd-vk-xGv" kind="show" id="9Iv-kB-dTn"/>
+                                                    <segue destination="lAd-vk-xGv" kind="popoverPresentation" popoverAnchorView="9H1-mL-a6j" id="9Iv-kB-dTn">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -88,7 +90,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.98068469762802124" green="0.77779257297515869" blue="0.86752992868423462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pi2-fg-WBH" secondAttribute="trailing" constant="64" id="1NR-1n-uxt"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jtz-Pq-XfI"/>
@@ -121,9 +123,11 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVr-hb-XLn">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="barTintColor" red="0.97419792413711548" green="0.69462049007415771" blue="0.80038529634475708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="KnowTT" id="Xik-24-mzQ">
                                         <barButtonItem key="rightBarButtonItem" title="Log Out" id="Hif-9m-BpC">
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="logOutTapped:" destination="2aS-vE-wKV" id="RIX-ge-hnp"/>
                                             </connections>
@@ -131,30 +135,32 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" axis="vertical" alignment="center" spacing="29" translatesAutoresizingMaskIntoConstraints="NO" id="Opf-oN-hlu">
-                                <rect key="frame" x="158" y="270" width="59" height="79.5"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl9-3v-4WV">
-                                        <rect key="frame" x="9" y="0.0" width="41" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-1B-reZ">
-                                        <rect key="frame" x="0.0" y="49.5" width="59" height="30"/>
-                                        <color key="backgroundColor" red="1" green="0.1506273591" blue="0.14241135099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Connect">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="connectTapped:" destination="2aS-vE-wKV" eventType="touchUpInside" id="eCk-yP-3OX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl9-3v-4WV">
+                                <rect key="frame" x="86" y="198" width="229" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-1B-reZ">
+                                <rect key="frame" x="77" y="329" width="59" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.1506273591" blue="0.14241135099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Connect">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectTapped:" destination="2aS-vE-wKV" eventType="touchUpInside" id="eCk-yP-3OX"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.81006305320000005" green="0.69528660499999995" blue="0.16619292090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.9747806191444397" green="0.65889233350753784" blue="0.77268260717391968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="hl9-3v-4WV" secondAttribute="trailing" constant="60" id="5TD-eR-9Xd"/>
+                            <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="JE9-wX-HrL" secondAttribute="top" constant="198" id="C2X-Nb-xaO"/>
+                            <constraint firstItem="Gee-1B-reZ" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="77" id="Gw7-eF-naV"/>
+                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="bottom" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="308" id="qth-SU-QRL"/>
+                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gee-1B-reZ" secondAttribute="trailing" symbolic="YES" id="s8f-4E-EXr"/>
+                            <constraint firstItem="hl9-3v-4WV" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="86" id="vWJ-tb-Rgl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Gg9-bi-xG5"/>
                     </view>
                     <connections>
@@ -217,9 +223,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="xaY-mS-aaq"/>
                                 </constraints>
+                                <color key="barTintColor" red="0.9538998007774353" green="0.71482175588607788" blue="0.80426758527755737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="Register New Member" id="nMe-wn-I0V">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="bUW-Qr-boa">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="bUW-Qr-boa">
+                                            <color key="tintColor" red="0.93048757314682007" green="0.19205617904663086" blue="0.91656571626663208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
                                                 <action selector="cancelTouched:" destination="lAd-vk-xGv" id="axK-Bg-Mpo"/>
                                             </connections>
@@ -228,7 +236,7 @@
                                 </items>
                             </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" red="0.81006305320000005" green="0.69528660499999995" blue="0.16619292090000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.98068469762802124" green="0.77779257297515869" blue="0.86752992868423462" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wZc-cR-mZd" firstAttribute="trailing" secondItem="mFS-jB-1ee" secondAttribute="trailing" id="1F9-wr-UtV"/>
                             <constraint firstItem="LfX-wH-yKV" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="62" id="7Kg-mg-Rkw"/>
@@ -255,7 +263,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="knowBackground" width="1407" height="2165"/>
+        <image name="pinkbackgrund" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xIF-Bo-XHZ"/>
