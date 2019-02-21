@@ -1,11 +1,11 @@
 package edu.ucsb.cs176b;
 
 public class Request{
-	String opCode;	//SEND,CONNECT,DISCONNECT,REGISTER,UNREGISTER,GET
-	String userId;
-	String latitude;
-	String longitude;
-	String message;
+	private String opCode;	//SEND,CONNECT,DISCONNECT,REGISTER,UNREGISTER,GET
+	private String userId;
+	private String latitude;
+	private String longitude;
+	private String message;
 
 	public Request(String opCode, String userId, String latitude, String longitude, String message){
 		this.opCode = opCode;
@@ -13,5 +13,9 @@ public class Request{
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.message = message;
+	}
+
+	public String getOpCode(){
+		return this.opCode;
 	}
 }

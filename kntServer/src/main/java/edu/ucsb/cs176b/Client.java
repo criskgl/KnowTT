@@ -60,6 +60,9 @@ public class Client {
 				// If client sends exit,close this connection
 				// and then break from the while loop
 				if(op.equals("Exit")) {
+					myRequest = new Request("EXIT",clientId,"","","");
+					dos.writeUTF(gson.toJson(myRequest));	//Send request
+
 					System.out.println("Closing this connection : " + s);
 					s.close();
 					System.out.println("Connection closed");
@@ -68,7 +71,7 @@ public class Client {
 
 				switch(op){
 					case "r":
-						if(clientId.equals("")){
+						if(!clientId.equals("")){
 							System.out.println("[ERROR] You are already registered");
 							break;
 						}

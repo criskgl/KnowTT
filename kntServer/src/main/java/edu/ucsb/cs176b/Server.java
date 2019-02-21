@@ -78,32 +78,46 @@ class ClientHandler extends Thread {
 
 	@Override
 	public void run() {
-		String received;
+		String received = "";
 		String toreturn;
+
+		Request request;
+		ReqAck reqAck;
+
+		Gson gson = new Gson();
+
 		while (true){
 			try {
 
 				// Ask user what he wants
-				dos.writeUTF("\n");
+				//dos.writeUTF("HOLA\n");
 
 				// receive the answer from client
-				received = dis.readUTF();
+				//received = dis.readUTF();
+				//TODO: Case when it's not a good formatted request
+				request = gson.fromJson(dis.readUTF(), Request.class);
 
-				Gson gson = new Gson();
-				/*Gson gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new JsonDeserializer<LocalDateTime>() {
-					@Override
-					public LocalDateTime deserialize(JsonElement json, Type type, JsonDeserializationContext jsonDeserializationContext) throws JsonParseException {
-						Instant instant = Instant.ofEpochMilli(json.getAsJsonPrimitive().getAsLong());
-						return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-					}
-				}).create();*/
-				//Gson gson = new GsonBuilder().create();
 
-				if(received.equals("Exit")) {
+				if(request.getOpCode().equals("EXIT")) {
 					System.out.println("Client " + this.s + " sends exit...");
 					System.out.println("Closing this connection.");
 					this.s.close();
 					System.out.println("Connection closed");
+					break;
+				}
+
+				switch(request.getOpCode()){
+					case "REGISTER":
+					break;
+					case "UNREGISTER":
+					break;
+					case "CONNECT":
+					break;
+					case "DISCONNECT":
+					break;
+					case "SEND":
+					break;
+					case "GET":
 					break;
 				}
 
@@ -112,32 +126,14 @@ class ClientHandler extends Thread {
 				Note newNote = gson.fromJson(received, Note.class);
 				System.out.println(newNote);
 
-				dos.writeUTF("ACK\n");
+				//dos.writeUTF("ACK\n");
 
 				// creating Date object
 				//Date date = new Date();
 
 				// write on output stream based on the
 				// answer from the client
-				/*switch (received) {
 
-					case "deez nuts" :
-						//toreturn = fordate.format(date);
-						dos.writeUTF("Go for it my man. Tell me the name of the file.");
-						break;
-
-					case "n" :
-						//toreturn = fortime.format(date);
-						dos.writeUTF("Such a badasss");
-						break;
-					case "json" :
-						//toreturn = fortime.format(date);
-						dos.writeUTF("Such a badasss");
-						break;
-					default:
-						dos.writeUTF("Invalid input");
-						break;
-				}*/
 
 			} catch (IOException e) {
 				e.printStackTrace();
