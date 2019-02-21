@@ -120,30 +120,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RVr-hb-XLn">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVr-hb-XLn">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="asG-Qi-ytU"/>
+                                </constraints>
                                 <color key="barTintColor" red="0.97419792413711548" green="0.69462049007415771" blue="0.80038529634475708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <navigationItem title="KnowTT" id="Xik-24-mzQ">
-                                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="Hif-9m-BpC">
+                                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Hif-9m-BpC">
                                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="logOutTapped:" destination="2aS-vE-wKV" id="RIX-ge-hnp"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ufB-dw-zv1">
+                                            <color key="tintColor" red="0.1459338469" green="0.29969747479999997" blue="0.1297213485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="addNoteTouched:" destination="2aS-vE-wKV" id="BK1-42-ggf"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hl9-3v-4WV">
-                                <rect key="frame" x="86" y="198" width="229" height="21"/>
+                                <rect key="frame" x="46" y="82" width="282" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="IZY-qq-Khu"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gee-1B-reZ">
-                                <rect key="frame" x="77" y="329" width="59" height="30"/>
+                                <rect key="frame" x="46" y="162" width="59" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.1506273591" blue="0.14241135099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="JVJ-6n-elQ"/>
+                                </constraints>
                                 <state key="normal" title="Connect">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -152,32 +166,44 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8lz-Cw-ecc">
-                                <rect key="frame" x="77" y="264" width="282" height="30"/>
+                                <rect key="frame" x="46" y="124" width="282" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="oNP-Hg-DAf"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="sdv-wl-nh8"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.9747806191444397" green="0.65889233350753784" blue="0.77268260717391968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="hl9-3v-4WV" secondAttribute="trailing" constant="60" id="5TD-eR-9Xd"/>
-                            <constraint firstItem="8lz-Cw-ecc" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="77" id="6Ef-9k-6YU"/>
-                            <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="JE9-wX-HrL" secondAttribute="top" constant="198" id="C2X-Nb-xaO"/>
-                            <constraint firstItem="Gee-1B-reZ" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="77" id="Gw7-eF-naV"/>
-                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="8lz-Cw-ecc" secondAttribute="trailing" constant="16" id="jrR-xg-FnR"/>
-                            <constraint firstItem="8lz-Cw-ecc" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="-95" id="mtO-B2-qF9"/>
-                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="bottom" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="308" id="qth-SU-QRL"/>
-                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gee-1B-reZ" secondAttribute="trailing" symbolic="YES" id="s8f-4E-EXr"/>
-                            <constraint firstItem="hl9-3v-4WV" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="86" id="vWJ-tb-Rgl"/>
+                            <constraint firstItem="RVr-hb-XLn" firstAttribute="top" secondItem="Gg9-bi-xG5" secondAttribute="top" id="0yA-D2-5D5"/>
+                            <constraint firstItem="Gee-1B-reZ" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="3eU-GJ-7i8"/>
+                            <constraint firstItem="8lz-Cw-ecc" firstAttribute="top" secondItem="hl9-3v-4WV" secondAttribute="bottom" constant="21" id="67U-3B-9pz"/>
+                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="8lz-Cw-ecc" secondAttribute="trailing" constant="47" id="BpT-En-Bht"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="trailing" secondItem="Gg9-bi-xG5" secondAttribute="trailing" id="HGA-9a-7rt"/>
+                            <constraint firstItem="RVr-hb-XLn" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" id="NsG-00-FT6"/>
+                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="hl9-3v-4WV" secondAttribute="trailing" constant="47" id="Ppg-yJ-2dN"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="bottom" secondItem="Gg9-bi-xG5" secondAttribute="bottom" id="S93-Ic-4Ce"/>
+                            <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Gee-1B-reZ" secondAttribute="trailing" constant="270" id="X0Z-ec-0c7"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="8" id="bxw-uh-Eih"/>
+                            <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="RVr-hb-XLn" secondAttribute="bottom" constant="18" id="cTM-aa-0J0"/>
+                            <constraint firstItem="8lz-Cw-ecc" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="eC4-Fq-1lQ"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" id="ecd-ey-TAR"/>
+                            <constraint firstItem="RVr-hb-XLn" firstAttribute="trailing" secondItem="Gg9-bi-xG5" secondAttribute="trailing" id="fcF-wG-KOn"/>
+                            <constraint firstItem="hl9-3v-4WV" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="jRr-by-Ai2"/>
+                            <constraint firstItem="Gee-1B-reZ" firstAttribute="top" secondItem="8lz-Cw-ecc" secondAttribute="bottom" constant="8" id="pan-cg-APK"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gg9-bi-xG5"/>
                     </view>
                     <connections>
                         <outlet property="tcpLog" destination="8lz-Cw-ecc" id="Sgy-Gd-iK6"/>
                         <outlet property="userLoggedInText" destination="hl9-3v-4WV" id="f88-Jt-hKr"/>
+                        <outlet property="userMap" destination="C1V-tn-b6U" id="yJw-Jv-bHA"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="userHomeToStart" id="xIF-Bo-XHZ"/>
                     </connections>
                 </viewController>

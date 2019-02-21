@@ -36,6 +36,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>KnowT needs your location to function</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>KnowT needs your location to function</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
