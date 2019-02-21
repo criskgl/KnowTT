@@ -71,10 +71,12 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     @IBAction func addNoteTouched(_ sender: Any) {
         //Get locations from user
         let coordinate =  CLLocationCoordinate2D(latitude: UserDefaults.standard.value(forKey: "LAT") as! CLLocationDegrees, longitude: UserDefaults.standard.value(forKey: "LON") as! CLLocationDegrees)
-        print("GOOOOTEEEEM:\n Lat: \(coordinate.latitude) \n Long: \(coordinate.longitude)")
+        let userLatitude = coordinate.latitude
+        let userLongitude = coordinate.longitude
+        print("GOOOOTEEEEM:\n Lat: \(userLatitude) \n Long: \(userLongitude)")
         //1. Create the alert controller.
         
-        let alert = UIAlertController(title: "New KnowT", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "New KnowT", message: "Latitude: \(userLatitude)\nLongitude: \(userLongitude)", preferredStyle: .alert)
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
             textField.text = "Your note goes here"
