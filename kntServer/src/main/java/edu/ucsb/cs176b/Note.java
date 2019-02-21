@@ -1,39 +1,42 @@
 package edu.ucsb.cs176b;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Note{
-	private double GPSLocationLatitude;
-	private double GPSLocationLongitude;
+	private double latitude;
+	private double longitude;
 	private String message;
-	private int timeTillDestroy;
+	private String creationTime;
 
 	public Note(){
-		GPSLocationLatitude=0.0;
-		GPSLocationLongitude=0.0;
-		message="";
-		timeTillDestroy=0;
+		latitude = 0.0;
+		longitude = 0.0;
+		message = "";
+		creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss.SSS"));
 	}
 
-	public Note(double GPSLocationLatitude, double GPSLocationLongitude, String message, int timeTillDestroy){
-		this.GPSLocationLatitude=GPSLocationLatitude;
-		this.GPSLocationLongitude=GPSLocationLongitude;
+	public Note(double latitude, double longitude, String message, String creationTime){
+		this.latitude=latitude;
+		this.longitude=longitude;
 		this.message=message;
-		this.timeTillDestroy=timeTillDestroy;
+		creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss.SSS"));
 	}
 
-	public double getGPSLocationLatitude(){
-		return this.GPSLocationLatitude;
+	public double getlatitude(){
+		return this.latitude;
 	}
 
-	public void setGPSLocationLatitude(double GPSLocationLatitude){
-		this.GPSLocationLatitude=GPSLocationLatitude;
+	public void setlatitude(double latitude){
+		this.latitude=latitude;
 	}
 
-	public double getGPSLocationLongitude(){
-		return this.GPSLocationLongitude;
+	public double getlongitude(){
+		return this.longitude;
 	}
 
-	public void setGPSLocationLongitude(double GPSLocationLongitude){
-		this.GPSLocationLongitude=GPSLocationLongitude;
+	public void setlongitude(double longitude){
+		this.longitude=longitude;
 	}
 
 	public String getMessage(){
@@ -44,11 +47,19 @@ public class Note{
 		this.message=message;
 	}
 
-	public int getTimeTillDestroy(){
-		return this.timeTillDestroy;
+	public String getCreationTime(){
+		return this.creationTime;
 	}
 
-	public void setTimeTillDestroy(int timeTillDestroy){
-		this.timeTillDestroy=timeTillDestroy;
+	public void setCreationTime(String creationTime){
+		this.creationTime=creationTime;
+	}
+
+	@Override
+	public String toString(){
+		return "Latitude: " + latitude
+			+ "\nLongitude: " + longitude
+			+ "\nMessage:\n\t"+ message
+			+ "\nCreation time: " + creationTime + "\n";
 	}
 }
