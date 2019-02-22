@@ -26,9 +26,9 @@ class UserNote {
     func getJson() -> Any{
         let dic = ["opCode": self.opCode, "userId": self.userId, "longitude": self.longitude, "latitude": self.latitude, "note": self.note]
             //self.getDictionary()
-        
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
+            let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .init(rawValue: 1))
+            
             // here "jsonData" is the dictionary encoded in JSON data
             print("json size:", jsonData)
             let decoded = try JSONSerialization.jsonObject(with: jsonData, options: [])
