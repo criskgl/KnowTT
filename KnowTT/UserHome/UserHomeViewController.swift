@@ -14,6 +14,14 @@ import SocketIO
 import SwiftSocket
 import MapKit
 
+struct Annotation{
+    var opCode: String
+    var userId: String
+    var latitude: String
+    var longitude: String
+    var note: String
+}
+
 class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
 
     @IBOutlet weak var tcpLog: UITextField!
@@ -60,7 +68,21 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         switch client.connect(timeout: 10) {
         case .success:
             appendToTextField(string: "Connected to host")
-            if let response = sendRequest(string:"Hey there, Im the Iphone!", using: client){
+            if let response = sendData(string:"Hey there, Im the Iphone!", using: client){
+                appendToTextField(string: "Response: \(response)")
+            }
+        case .failure(let error):
+            appendToTextField(string: String(describing: error))
+        }
+    }
+    
+    func sendJson(_ sender: Any, _ jsonString: String) {
+        //Trying to send messages
+        guard let client = client else{return}
+        switch client.connect(timeout: 10) {
+        case .success:
+            appendToTextField(string: "Connected to host")
+            if let response = sendData(string: jsonString, using: client){
                 appendToTextField(string: "Response: \(response)")
             }
         case .failure(let error):
@@ -69,13 +91,17 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     @IBAction func addNoteTouched(_ sender: Any) {
+        //Set opcode
+        let opCode = "1"
+        //Get userId
+        let userId = "\(userMail!))"
         //Get locations from user
         let coordinate =  CLLocationCoordinate2D(latitude: UserDefaults.standard.value(forKey: "LAT") as! CLLocationDegrees, longitude: UserDefaults.standard.value(forKey: "LON") as! CLLocationDegrees)
-        let userLatitude = coordinate.latitude
-        let userLongitude = coordinate.longitude
-        print("GOOOOTEEEEM:\n Lat: \(userLatitude) \n Long: \(userLongitude)")
+        let userLatitudeCoord = coordinate.latitude
+        let userLongitudeCoord = coordinate.longitude
+        let userLongitude = "\(userLongitudeCoord)"
+        let userLatitude = "\(userLatitudeCoord)"
         //1. Create the alert controller.
-        
         let alert = UIAlertController(title: "New KnowT", message: "Latitude: \(userLatitude)\nLongitude: \(userLongitude)", preferredStyle: .alert)
         //2. Add the text field. You can configure it however you need.
         alert.addTextField { (textField) in
@@ -86,19 +112,19 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         alert.addAction(UIAlertAction(title: "KnowtIt", style: .default, handler:
             {
                 [weak alert] (_) in
-                let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-                #warning ("Implemennt wrapping of data")
-                #warning ("Send to server with opcode 1")
-                
-                print("Text field: \(String(describing: textField?.text))")
+                let userNoteRaw = alert?.textFields![0] // This is the user note
+                let userNote = userNoteRaw?.text!
+                let note = UserNote()
+                note.buildNote(opCode, userId, userLatitude, userLongitude, userNote!)
+                let json = note.getJson()
+                let dataToSend = "\(json)"
+                self.sendJson(self, dataToSend)
             }))
-        
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
- 
     }
     
-    private func sendRequest(string: String, using client: TCPClient) -> String? {
+    private func sendData(string: String, using client: TCPClient) -> String? {
         appendToTextField(string: "Iphone Sending Data . . .")
         
         switch client.send(string: string) {

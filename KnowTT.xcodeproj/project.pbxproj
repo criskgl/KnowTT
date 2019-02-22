@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4008FFC42219DCA200E2A361 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008FFC32219DCA200E2A361 /* RegisterView.swift */; };
+		4022810C221F869900096913 /* userNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022810B221F869900096913 /* userNote.swift */; };
 		4036DC12221A0A1900BD8671 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */; };
 		408E46332217737100E98992 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E46322217737100E98992 /* AppDelegate.swift */; };
 		408E46352217737100E98992 /* RegisterSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E46342217737100E98992 /* RegisterSignView.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		0BC3056FBF0D2675AFAD3092 /* Pods-KnowTT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnowTT.debug.xcconfig"; path = "Target Support Files/Pods-KnowTT/Pods-KnowTT.debug.xcconfig"; sourceTree = "<group>"; };
 		4008FFC32219DCA200E2A361 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		4022810B221F869900096913 /* userNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userNote.swift; sourceTree = "<group>"; };
 		4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		408E462F2217737100E98992 /* KnowTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		408E46322217737100E98992 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 			path = UserHome;
 			sourceTree = "<group>";
 		};
+		4022810D221F904300096913 /* Aux Objects */ = {
+			isa = PBXGroup;
+			children = (
+				4022810B221F869900096913 /* userNote.swift */,
+			);
+			path = "Aux Objects";
+			sourceTree = "<group>";
+		};
 		4036DC10221A09C100BD8671 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +109,7 @@
 		408E46312217737100E98992 /* KnowTT */ = {
 			isa = PBXGroup;
 			children = (
+				4022810D221F904300096913 /* Aux Objects */,
 				408E46362217737100E98992 /* Main.storyboard */,
 				4003C66B221BB8B5009B9EC4 /* UserHome */,
 				4036DC10221A09C100BD8671 /* Authentication */,
@@ -260,6 +271,7 @@
 				408E465022193F9C00E98992 /* enhancingUIView.swift in Sources */,
 				4008FFC42219DCA200E2A361 /* RegisterView.swift in Sources */,
 				408E46352217737100E98992 /* RegisterSignView.swift in Sources */,
+				4022810C221F869900096913 /* userNote.swift in Sources */,
 				408E463B2217737100E98992 /* UCSellB.xcdatamodeld in Sources */,
 				408E46332217737100E98992 /* AppDelegate.swift in Sources */,
 			);
