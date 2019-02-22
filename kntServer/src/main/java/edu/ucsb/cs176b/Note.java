@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Note{
+	private String creationTime;
 	private double latitude;
 	private double longitude;
 	private String message;
-	private String creationTime;
 
 	public Note(){
 		latitude = 0.0;

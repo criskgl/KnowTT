@@ -1,0 +1,8 @@
+edu/ucsb/cs176b/User.class
+edu/ucsb/cs176b/Request.class
+edu/ucsb/cs176b/Note.class
+edu/ucsb/cs176b/ClientHandler.class
+edu/ucsb/cs176b/Server.class
+edu/ucsb/cs176b/ReqAck.class
+edu/ucsb/cs176b/Client.class
+edu/ucsb/cs176b/App.class

@@ -87,18 +87,25 @@ class ClientHandler extends Thread {
 		int user_i;
 		int note_i;
 
+		byte[] bufr = new byte[1024];
+		String bufs = "";
+
 		Gson gson = new Gson();
 
 		while (true){
 			try {
-
+				Arrays.fill(bufr, (byte)0);
+				bufs = "";
 				// Ask user what he wants
 				//dos.writeUTF("HOLA\n");
 
 				// receive the answer from client
 				//received = dis.readUTF();
 				//TODO: Case when it's not a good formatted request
-				request = gson.fromJson(dis.readUTF(), Request.class);
+				dis.read(bufr);
+				bufs = new String(bufr);
+				System.out.println(bufs);
+				request = gson.fromJson(bufs.trim(), Request.class);
 				System.out.println(gson.toJson(request));	//DELETE
 
 
@@ -160,7 +167,7 @@ class ClientHandler extends Thread {
 							reqAck.setResult("ACK");
 						}
 					break;
-					case "SEND":
+					case "POST":
 						if(user_i<0){
 							reqAck.setResult("ERROR");
 						}
@@ -181,11 +188,13 @@ class ClientHandler extends Thread {
 						}
 						else{
 							for(Note note : notesDB){
-								dos.writeUTF(gson.toJson(note));
+								dos.write(gson.toJson(note).getBytes());
 							}
-							dos.writeUTF(gson.toJson(new Note(0.0,0.0,"[END]")));
+							dos.write(gson.toJson(new Note(0.0,0.0,"[END]")).getBytes());
 						}
 					break;
+					default:
+						System.out.println("[ERROR] Unknown operation code");
 				}
 
 				//System.out.println(received);
@@ -193,7 +202,7 @@ class ClientHandler extends Thread {
 				//Note newNote = gson.fromJson(received, Note.class);
 				//System.out.println(newNote);
 				if(!request.getOpCode().equals("GET"))
-					dos.writeUTF(gson.toJson(reqAck));
+					dos.write(gson.toJson(reqAck).getBytes());
 
 				// creating Date object
 				//Date date = new Date();
