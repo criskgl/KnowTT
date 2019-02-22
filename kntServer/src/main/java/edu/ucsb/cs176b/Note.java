@@ -16,7 +16,7 @@ public class Note{
 		creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss.SSS"));
 	}
 
-	public Note(double latitude, double longitude, String message, String creationTime){
+	public Note(double latitude, double longitude, String message){
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.message=message;

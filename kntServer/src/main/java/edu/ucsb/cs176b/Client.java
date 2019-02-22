@@ -85,7 +85,7 @@ public class Client {
 						reqAck_s = dis.readUTF();
 						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
 
-						if(reqAck.equals("ACK")){
+						if(reqAck.getResult().equals("ACK")){
 							clientId = userName;
 							System.out.println("Register success");
 						}
@@ -107,7 +107,7 @@ public class Client {
 						reqAck_s = dis.readUTF();
 						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
 
-						if(reqAck.equals("ACK")){
+						if(reqAck.getResult().equals("ACK")){
 							clientId = "";
 							System.out.println("Unregister success");
 						}
@@ -130,8 +130,8 @@ public class Client {
 						reqAck_s = dis.readUTF();
 						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
 
-						if(reqAck.equals("ACK")){
-							clientId = "";
+						if(reqAck.getResult().equals("ACK")){
+							connected = true;
 							System.out.println("Connection success");
 						}
 						else{	//TODO: Consider different errors
@@ -153,8 +153,8 @@ public class Client {
 						reqAck_s = dis.readUTF();
 						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
 
-						if(reqAck.equals("ACK")){
-							clientId = "";
+						if(reqAck.getResult().equals("ACK")){
+							connected=false;
 							System.out.println("Disonnection success");
 						}
 						else{	//TODO: Consider different errors
@@ -178,8 +178,7 @@ public class Client {
 						reqAck_s = dis.readUTF();
 						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
 
-						if(reqAck.equals("ACK")){
-							clientId = "";
+						if(reqAck.getResult().equals("ACK")){
 							System.out.println("Sending success");
 						}
 						else{	//TODO: Consider different errors

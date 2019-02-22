@@ -7,6 +7,14 @@ public class Request{
 	private String longitude;
 	private String message;
 
+	public Request(){
+		this.opCode = "";
+		this.userId = "";
+		this.latitude = "";
+		this.longitude = "";
+		this.message = "";
+	}
+
 	public Request(String opCode, String userId, String latitude, String longitude, String message){
 		this.opCode = opCode;
 		this.userId = userId;
@@ -17,5 +25,21 @@ public class Request{
 
 	public String getOpCode(){
 		return this.opCode;
+	}
+
+	public String getUserId(){
+		return this.userId;
+	}
+
+	public String getLatitude(){
+		return this.latitude;
+	}
+
+	public String getLongitude(){
+		return this.longitude;
+	}
+
+	public String getMessage(){
+		return this.message;
 	}
 }

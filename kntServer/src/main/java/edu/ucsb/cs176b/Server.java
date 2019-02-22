@@ -82,7 +82,10 @@ class ClientHandler extends Thread {
 		String toreturn;
 
 		Request request;
-		ReqAck reqAck;
+		ReqAck reqAck = new ReqAck();
+
+		int user_i;
+		int note_i;
 
 		Gson gson = new Gson();
 
@@ -96,6 +99,7 @@ class ClientHandler extends Thread {
 				//received = dis.readUTF();
 				//TODO: Case when it's not a good formatted request
 				request = gson.fromJson(dis.readUTF(), Request.class);
+				System.out.println(gson.toJson(request));	//DELETE
 
 
 				if(request.getOpCode().equals("EXIT")) {
@@ -106,27 +110,90 @@ class ClientHandler extends Thread {
 					break;
 				}
 
+				reqAck.setOpCode(request.getOpCode());
+				user_i = getUserIndex(request.getUserId());
+				System.out.println(request.getUserId() + "\tindex: " + user_i);
+
 				switch(request.getOpCode()){
 					case "REGISTER":
+						if(user_i>=0){
+							reqAck.setResult("ERROR");
+						}
+						else{	//Register
+							usersDB.add(new User(request.getUserId(),false));
+							reqAck.setResult("ACK");
+						}
+
 					break;
 					case "UNREGISTER":
+						if(user_i<0){
+							reqAck.setResult("ERROR");
+						}
+						else{
+							usersDB.remove(user_i);
+							reqAck.setResult("ACK");
+						}
 					break;
 					case "CONNECT":
+						if(user_i<0){	//Not registered
+							reqAck.setResult("ERROR");
+						}
+						else if(usersDB.get(user_i).getConnected()){	//Already connected
+							reqAck.setResult("ERROR");
+						}
+						else{
+							usersDB.get(user_i).setConnected(true);
+							reqAck.setResult("ACK");
+						}
 					break;
 					case "DISCONNECT":
+						System.out.println("1");
+						if(user_i<0){	//Not registered
+							reqAck.setResult("ERROR");
+						}
+						else if(!usersDB.get(user_i).getConnected()){	//Already disconnected
+							reqAck.setResult("ERROR");
+						}
+						else{
+							System.out.println("2");
+							usersDB.get(user_i).setConnected(false);
+							reqAck.setResult("ACK");
+						}
 					break;
 					case "SEND":
+						if(user_i<0){
+							reqAck.setResult("ERROR");
+						}
+						else if(!usersDB.get(user_i).getConnected()){	//Disconnected
+							reqAck.setResult("ERROR");
+						}
+						else{
+							notesDB.add(new Note(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),request.getMessage()));
+							reqAck.setResult("ACK");
+						}
 					break;
 					case "GET":
+						if(user_i<0){
+							reqAck.setResult("ERROR");
+						}
+						else if(!usersDB.get(user_i).getConnected()){	//Disconnected
+							reqAck.setResult("ERROR");
+						}
+						else{
+							for(Note note : notesDB){
+								dos.writeUTF(gson.toJson(note));
+							}
+							dos.writeUTF(gson.toJson(new Note(0.0,0.0,"[END]")));
+						}
 					break;
 				}
 
 				//System.out.println(received);
 				//Note newNote = new Note();
-				Note newNote = gson.fromJson(received, Note.class);
-				System.out.println(newNote);
-
-				//dos.writeUTF("ACK\n");
+				//Note newNote = gson.fromJson(received, Note.class);
+				//System.out.println(newNote);
+				if(!request.getOpCode().equals("GET"))
+					dos.writeUTF(gson.toJson(reqAck));
 
 				// creating Date object
 				//Date date = new Date();
@@ -152,8 +219,15 @@ class ClientHandler extends Thread {
 
 
 	//METHODS
-	public void store(Note note){
 
+	//Return index. -1 if not present
+	public int getUserIndex(String id){	//HASH TABLES
+
+		for(int i = 0; i<usersDB.size();i++){
+			if(usersDB.get(i).getUserId().equals(id)) return i;
+		}
+
+		return -1;
 	}
 
 
