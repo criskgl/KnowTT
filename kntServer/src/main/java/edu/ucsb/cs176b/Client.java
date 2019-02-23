@@ -5,6 +5,7 @@ package edu.ucsb.cs176b;
 
 import java.io.*;
 import java.net.*;
+import java.util.Arrays;
 import java.util.Scanner;
 import com.google.gson.*;
 import java.time.LocalDateTime;
@@ -32,6 +33,8 @@ public class Client {
 		Note note;
 		String message="";
 
+		byte[] bufr = new byte[1024];
+
 
 		try {
 			Scanner scn = new Scanner(System.in);
@@ -53,15 +56,16 @@ public class Client {
 			// the following loop performs the exchange of
 			// information between client and client handler
 			while (true) {
+				Arrays.fill(bufr, (byte)0);
 				//System.out.println(dis.readUTF());
-				System.out.print("\nCommand list:\nr to REGISTER - u to UNREGISTER - c to CONNECT - d to DISCONNECT - s to SEND - g to GET - Exit to EXIT\n> ");
+				System.out.print("\nCommand list:\nr to REGISTER - u to UNREGISTER - c to CONNECT - d to DISCONNECT - p to POST - g to GET - Exit to EXIT\n> ");
 				op = scn.nextLine();
 
 				// If client sends exit,close this connection
 				// and then break from the while loop
 				if(op.equals("Exit")) {
 					myRequest = new Request("EXIT",clientId,"","","");
-					dos.writeUTF(gson.toJson(myRequest));	//Send request
+					dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 					System.out.println("Closing this connection : " + s);
 					s.close();
@@ -79,13 +83,14 @@ public class Client {
 						System.out.print("Insert your user name\n> ");
 						userName = scn.nextLine();
 						myRequest = new Request("REGISTER",userName,"","","");
-						dos.writeUTF(gson.toJson(myRequest));	//Send request
+						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
-						reqAck_s = dis.readUTF();
-						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
+						dis.read(bufr);
+						reqAck_s = new String(bufr);
+						reqAck = gson.fromJson(reqAck_s.trim(),ReqAck.class);
 
-						if(reqAck.equals("ACK")){
+						if(reqAck.getResult().equals("ACK")){
 							clientId = userName;
 							System.out.println("Register success");
 						}
@@ -101,13 +106,14 @@ public class Client {
 						}
 
 						myRequest = new Request("UNREGISTER",clientId,"","","");
-						dos.writeUTF(gson.toJson(myRequest));	//Send request
+						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
-						reqAck_s = dis.readUTF();
-						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
+						dis.read(bufr);
+						reqAck_s = new String(bufr);
+						reqAck = gson.fromJson(reqAck_s.trim(),ReqAck.class);
 
-						if(reqAck.equals("ACK")){
+						if(reqAck.getResult().equals("ACK")){
 							clientId = "";
 							System.out.println("Unregister success");
 						}
@@ -124,14 +130,15 @@ public class Client {
 						}
 
 						myRequest = new Request("CONNECT",clientId,"","","");
-						dos.writeUTF(gson.toJson(myRequest));	//Send request
+						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
-						reqAck_s = dis.readUTF();
-						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
+						dis.read(bufr);
+						reqAck_s = new String(bufr);
+						reqAck = gson.fromJson(reqAck_s.trim(),ReqAck.class);
 
-						if(reqAck.equals("ACK")){
-							clientId = "";
+						if(reqAck.getResult().equals("ACK")){
+							connected = true;
 							System.out.println("Connection success");
 						}
 						else{	//TODO: Consider different errors
@@ -147,14 +154,15 @@ public class Client {
 						}
 
 						myRequest = new Request("DISCONNECT",clientId,"","","");
-						dos.writeUTF(gson.toJson(myRequest));	//Send request
+						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
-						reqAck_s = dis.readUTF();
-						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
+						dis.read(bufr);
+						reqAck_s = new String(bufr);
+						reqAck = gson.fromJson(reqAck_s.trim(),ReqAck.class);
 
-						if(reqAck.equals("ACK")){
-							clientId = "";
+						if(reqAck.getResult().equals("ACK")){
+							connected=false;
 							System.out.println("Disonnection success");
 						}
 						else{	//TODO: Consider different errors
@@ -162,7 +170,7 @@ public class Client {
 						}
 
 					break;
-					case "s":
+					case "p":
 						if(!connected || clientId.equals("")){
 							System.out.println("[ERROR] Not registered or connected");
 							break;
@@ -171,15 +179,15 @@ public class Client {
 						System.out.print("Type the message of your note\n> ");
 						message = scn.nextLine();
 
-						myRequest = new Request("SEND",clientId,latitude,longitude,message);
-						dos.writeUTF(gson.toJson(myRequest));	//Send request
+						myRequest = new Request("POST",clientId,latitude,longitude,message);
+						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
-						reqAck_s = dis.readUTF();
-						reqAck = gson.fromJson(reqAck_s,ReqAck.class);
+						dis.read(bufr);
+						reqAck_s = new String(bufr);
+						reqAck = gson.fromJson(reqAck_s.trim(),ReqAck.class);
 
-						if(reqAck.equals("ACK")){
-							clientId = "";
+						if(reqAck.getResult().equals("ACK")){
 							System.out.println("Sending success");
 						}
 						else{	//TODO: Consider different errors
@@ -193,18 +201,19 @@ public class Client {
 						}
 
 						myRequest = new Request("GET",clientId,latitude,longitude,message);
-						dos.writeUTF(gson.toJson(myRequest));	//Send request
+						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
-
-						note_s = dis.readUTF();
-						note = gson.fromJson(note_s,Note.class);
+						dis.read(bufr);
+						note_s = new String(bufr);
+						note = gson.fromJson(note_s.trim(),Note.class);
 
 						while(!note.getMessage().equals("[END]")){	//TODO: CHANGE CODE AND PREVENT USER FROM WRITTING THIS MESSAGE
 							System.out.println(note);	//Print previous note
 
-							note_s = dis.readUTF();	//Get next note
-							note = gson.fromJson(note_s,Note.class);
+							dis.read(bufr);
+							note_s = new String(bufr);	//Get next note
+							note = gson.fromJson(note_s.trim(),Note.class);
 						}
 
 						System.out.println("END");
