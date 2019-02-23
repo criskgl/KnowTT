@@ -10,6 +10,49 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="bvy-wF-fgc">
+            <objects>
+                <viewController id="H3U-DH-7IZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LWc-JL-mpB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notification View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAZ-Z3-1o8">
+                                <rect key="frame" x="122" y="323" width="130" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="TLr-8d-8Oq"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" badgeValue="6" systemItem="mostViewed" id="YVi-L2-bdz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFm-5Y-YVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-559" y="-592"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="5KO-Ua-OTY">
+            <objects>
+                <tabBarController id="8w9-To-hrd" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VI1-cR-O2j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="H3U-DH-7IZ" kind="relationship" relationship="viewControllers" id="qNA-2x-02n"/>
+                        <segue destination="2aS-vE-wKV" kind="relationship" relationship="viewControllers" id="YIx-Fw-xnw"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qx9-ki-AGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="270" y="-1353"/>
+        </scene>
         <!--Register Sign View-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -105,7 +148,7 @@
                     <connections>
                         <outlet property="userMail" destination="umJ-QL-zfy" id="GtF-O9-LIv"/>
                         <outlet property="userPassword" destination="SMW-Qv-rfy" id="taG-XD-aMY"/>
-                        <segue destination="2aS-vE-wKV" kind="presentation" identifier="RegisterSignToUserHome" id="W6W-uw-JHY"/>
+                        <segue destination="8w9-To-hrd" kind="show" identifier="RegisterSignToUserHome" id="8Ih-TT-aP5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -176,7 +219,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
-                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="418"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzj-fu-G1h">
                                 <rect key="frame" x="253" y="162" width="75" height="30"/>
@@ -216,6 +259,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gg9-bi-xG5"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="hx8-kZ-iE5"/>
                     <connections>
                         <outlet property="tcpLog" destination="8lz-Cw-ecc" id="Sgy-Gd-iK6"/>
                         <outlet property="userLoggedInText" destination="hl9-3v-4WV" id="f88-Jt-hKr"/>
@@ -225,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNB-wF-QcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="957.60000000000002" y="-537.48125937031489"/>
+            <point key="canvasLocation" x="1001" y="-567"/>
         </scene>
         <!--Register View-->
         <scene sceneID="ASf-YG-aKp">
@@ -314,7 +358,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="84h-OX-ApO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-527" y="895"/>
+            <point key="canvasLocation" x="-686" y="874"/>
         </scene>
     </scenes>
     <resources>
