@@ -24,19 +24,15 @@ class UserNote {
     }
     
     func getJson() -> Any{
-        let dic = ["opCode": self.opCode, "userId": self.userId, "longitude": self.longitude, "latitude": self.latitude, "note": self.note]
-            //self.getDictionary()
-        do {
-            let jsonData = try JSONSerialization.data(withJSONObject: dic, options: .init(rawValue: 1))
-            
-            // here "jsonData" is the dictionary encoded in JSON data
-            print("json size:", jsonData)
-            let decoded = try JSONSerialization.jsonObject(with: jsonData, options: [])
-            // here "decoded" is of type `Any`, decoded from JSON data
-            print("json :", decoded)
-            return decoded
-        } catch {
-            print(error.localizedDescription)
+        //Build dictionary
+        let dictionary = ["opCode": self.opCode, "userId": self.userId, "longitude": self.longitude, "latitude": self.latitude, "message": self.note]
+        
+        if let theJSONData = try? JSONSerialization.data(
+            withJSONObject: dictionary,
+            options: []) {
+            let theJSONText = String(data: theJSONData,
+                                     encoding: .ascii)
+            return theJSONText ?? ""
         }
         return "Error"
     }
