@@ -177,8 +177,8 @@
                                                 <action selector="logOutTapped:" destination="2aS-vE-wKV" id="RIX-ge-hnp"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ufB-dw-zv1">
-                                            <color key="tintColor" red="0.1459338469" green="0.29969747479999997" blue="0.1297213485" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="addNote" id="ufB-dw-zv1">
+                                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="addNoteTouched:" destination="2aS-vE-wKV" id="BK1-42-ggf"/>
                                             </connections>
@@ -259,7 +259,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Gg9-bi-xG5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="hx8-kZ-iE5"/>
+                    <tabBarItem key="tabBarItem" systemItem="topRated" id="hx8-kZ-iE5"/>
                     <connections>
                         <outlet property="tcpLog" destination="8lz-Cw-ecc" id="Sgy-Gd-iK6"/>
                         <outlet property="userLoggedInText" destination="hl9-3v-4WV" id="f88-Jt-hKr"/>
@@ -362,6 +362,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addNote" width="128" height="128"/>
         <image name="pinkbackgrund" width="1080" height="1920"/>
     </resources>
     <inferredMetricsTieBreakers>
