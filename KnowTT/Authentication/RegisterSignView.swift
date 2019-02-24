@@ -15,8 +15,13 @@ class RegisterSignView: UIViewController {
     @IBOutlet weak var userMail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
+    @IBOutlet weak var registerButton: UIButton!
+    
+    @IBOutlet weak var signInButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerButton.layer.cornerRadius = 15
+        signInButton.layer.cornerRadius = 15
     }
 
     //Actions from Storyboard

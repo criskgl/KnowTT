@@ -17,6 +17,13 @@ class RegisterView: UIViewController{
     
     var userRegistered = ""
     
+    
+    @IBOutlet weak var registerButton: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerButton.layer.cornerRadius = 15
+    }
+    
     @IBAction func submitRegistration(_ sender: UIButton) {
         
         let email = userMail.text!
