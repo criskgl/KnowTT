@@ -13,6 +13,7 @@ import FirebaseDatabase
 import SocketIO
 import SwiftSocket
 import MapKit
+import SCLAlertView
 
 struct ACKPostNoteDecoded: Codable {
     var opCode: String
@@ -130,6 +131,8 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
                         let latitudeEffectiveValue = (userLatitude as NSString).doubleValue
                          let longitudeEffectiveValue = (userLongitude as NSString).doubleValue
                         self.pinNote(withText: userNote!, inLatitude: latitudeEffectiveValue, inLongitud: longitudeEffectiveValue)
+                    }else{
+                        SCLAlertView().showError("Could not post your note", subTitle: "Please try again in a few minutes")
                     }
                 } catch {
                     print(error.localizedDescription)

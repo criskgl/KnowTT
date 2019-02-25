@@ -146,8 +146,8 @@
                                     <constraint firstAttribute="height" constant="149" id="fqP-Tg-dR4"/>
                                 </constraints>
                             </stackView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onlyLogoKnowTT" translatesAutoresizingMaskIntoConstraints="NO" id="wwJ-Cp-8p8">
-                                <rect key="frame" x="64" y="60" width="247" height="131"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onlyLogoKnowTOrange" translatesAutoresizingMaskIntoConstraints="NO" id="wwJ-Cp-8p8">
+                                <rect key="frame" x="64" y="62" width="247" height="129"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99853295087814331" green="0.72991132736206055" blue="0.0049731340259313583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,7 +157,7 @@
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jtz-Pq-XfI"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwJ-Cp-8p8" secondAttribute="trailing" constant="64" id="Vgh-M0-j7e"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="wwJ-Cp-8p8" secondAttribute="bottom" constant="8" id="WZx-39-HmX"/>
-                            <constraint firstItem="wwJ-Cp-8p8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="YOg-0z-ool"/>
+                            <constraint firstItem="wwJ-Cp-8p8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="YOg-0z-ool"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ylw-oY-CFi"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="179" id="gfH-CX-b4B"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="khE-ax-bYf"/>
@@ -245,7 +245,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="200" width="375" height="418"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzj-fu-G1h">
                                 <rect key="frame" x="253" y="162" width="75" height="30"/>
@@ -275,7 +275,7 @@
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Gee-1B-reZ" secondAttribute="trailing" constant="130" id="X0Z-ec-0c7"/>
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Jzj-fu-G1h" secondAttribute="trailing" constant="47" id="Ydq-ee-chE"/>
                             <constraint firstItem="Jzj-fu-G1h" firstAttribute="top" secondItem="8lz-Cw-ecc" secondAttribute="bottom" constant="8" id="Zqa-Vm-b33"/>
-                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="-128" id="bxw-uh-Eih"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="8" id="bxw-uh-Eih"/>
                             <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="RVr-hb-XLn" secondAttribute="bottom" constant="18" id="cTM-aa-0J0"/>
                             <constraint firstItem="8lz-Cw-ecc" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="eC4-Fq-1lQ"/>
                             <constraint firstItem="C1V-tn-b6U" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" id="ecd-ey-TAR"/>
@@ -394,7 +394,7 @@
         <image name="feed" width="32" height="32"/>
         <image name="iconfinder_back_172570-2" width="32" height="32"/>
         <image name="mapIcon32px" width="32" height="32"/>
-        <image name="onlyLogoKnowTT" width="481" height="292"/>
+        <image name="onlyLogoKnowTOrange" width="481" height="292"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xIF-Bo-XHZ"/>

@@ -11,4 +11,5 @@ target 'KnowTT' do
   pod 'Firebase/Database'
   pod 'Socket.IO-Client-Swift', '~> 14.0.0'
   pod 'SwiftSocket'
+  pod 'SCLAlertView'
 end
