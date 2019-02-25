@@ -66,6 +66,8 @@ class ClientHandler extends Thread {
 	List<Note> notesDB;
 	List<User> usersDB;
 
+	DBHandler dbHandler = new DBHandler();
+
 
 	// Constructor
 	public ClientHandler(Socket s, DataInputStream dis, DataOutputStream dos, List<Note> notesDB, List<User> usersDB){
@@ -127,8 +129,15 @@ class ClientHandler extends Thread {
 							reqAck.setResult("ERROR");
 						}
 						else{	//Register
-							usersDB.add(new User(request.getUserId(),false));
-							reqAck.setResult("ACK");
+							try{
+								usersDB.add(new User(request.getUserId(),false));
+								dbHandler.registerUser(new User(request.getUserId(),false));
+								reqAck.setResult("ACK");
+							}
+							catch(Exception e){
+								System.out.println(e);
+								reqAck.setResult("ERROR");
+							}
 						}
 
 					break;
@@ -175,8 +184,15 @@ class ClientHandler extends Thread {
 							reqAck.setResult("ERROR");
 						}
 						else{
-							notesDB.add(new Note(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),request.getMessage()));
-							reqAck.setResult("ACK");
+							notesDB.add(new Note(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),request.getMessage(),request.getUserId()));
+							try{
+								dbHandler.insertNote(new Note(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),request.getMessage(),request.getUserId()));
+								reqAck.setResult("ACK");
+							}
+							catch (Exception e){
+								reqAck.setResult("ERROR");
+								System.out.println(e);
+							}
 						}
 					break;
 					case "GET":
@@ -190,7 +206,7 @@ class ClientHandler extends Thread {
 							for(Note note : notesDB){
 								dos.write(gson.toJson(note).getBytes());
 							}
-							dos.write(gson.toJson(new Note(0.0,0.0,"[END]")).getBytes());
+							dos.write(gson.toJson(new Note(0.0,0.0,"[END]","")).getBytes());
 						}
 					break;
 					default:

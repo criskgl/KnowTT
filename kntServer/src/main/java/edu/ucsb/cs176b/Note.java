@@ -8,34 +8,45 @@ public class Note{
 	private double latitude;
 	private double longitude;
 	private String message;
+	private String userId;
 
 	public Note(){
-		latitude = 0.0;
-		longitude = 0.0;
-		message = "";
-		creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss.SSS"));
+		this.latitude = 0.0;
+		this.longitude = 0.0;
+		this.message = "";
+		this.creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		this.userId = "";
 	}
 
-	public Note(double latitude, double longitude, String message){
+	public Note(double latitude, double longitude, String message, String userId){
 		this.latitude=latitude;
 		this.longitude=longitude;
 		this.message=message;
-		creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss.SSS"));
+		this.creationTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		this.userId = userId;
 	}
 
-	public double getlatitude(){
+	public Note(double latitude, double longitude, String message, String creationTime, String userId){
+		this.latitude=latitude;
+		this.longitude=longitude;
+		this.message=message;
+		this.creationTime = creationTime;
+		this.userId = userId;
+	}
+
+	public double getLatitude(){
 		return this.latitude;
 	}
 
-	public void setlatitude(double latitude){
+	public void setLatitude(double latitude){
 		this.latitude=latitude;
 	}
 
-	public double getlongitude(){
+	public double getLongitude(){
 		return this.longitude;
 	}
 
-	public void setlongitude(double longitude){
+	public void setLongitude(double longitude){
 		this.longitude=longitude;
 	}
 
@@ -45,6 +56,14 @@ public class Note{
 
 	public void setMessage(String message){
 		this.message=message;
+	}
+
+	public String getUserId(){
+		return this.userId;
+	}
+
+	public void setUserId(String userId){
+		this.userId=userId;
 	}
 
 	public String getCreationTime(){
