@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4008FFC42219DCA200E2A361 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4008FFC32219DCA200E2A361 /* RegisterView.swift */; };
 		4022810C221F869900096913 /* userNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022810B221F869900096913 /* userNote.swift */; };
+		402A3B2A2225D38A0055F0F6 /* NoteDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A3B292225D38A0055F0F6 /* NoteDetailedView.swift */; };
 		4036DC12221A0A1900BD8671 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */; };
 		408E46332217737100E98992 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E46322217737100E98992 /* AppDelegate.swift */; };
 		408E46352217737100E98992 /* RegisterSignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E46342217737100E98992 /* RegisterSignView.swift */; };
@@ -35,6 +36,7 @@
 		40D1DA1B22234CEE00CD992A /* Icon-App-40x40@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D1DA0B22234CEE00CD992A /* Icon-App-40x40@3x.png */; };
 		40D1DA1C22234CEE00CD992A /* Icon-App-29x29@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D1DA0C22234CEE00CD992A /* Icon-App-29x29@2x.png */; };
 		40D1DA2022234DF600CD992A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40D1DA1F22234DF600CD992A /* Assets.xcassets */; };
+		40D1DA242225CA6A00CD992A /* UserFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D1DA232225CA6A00CD992A /* UserFeedViewController.swift */; };
 		FC3ACCD2F28243820F9A4028 /* Pods_KnowTT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7670DE940EFA662EA59828F8 /* Pods_KnowTT.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +44,7 @@
 		0BC3056FBF0D2675AFAD3092 /* Pods-KnowTT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnowTT.debug.xcconfig"; path = "Target Support Files/Pods-KnowTT/Pods-KnowTT.debug.xcconfig"; sourceTree = "<group>"; };
 		4008FFC32219DCA200E2A361 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		4022810B221F869900096913 /* userNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userNote.swift; sourceTree = "<group>"; };
+		402A3B292225D38A0055F0F6 /* NoteDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailedView.swift; sourceTree = "<group>"; };
 		4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
 		408E462F2217737100E98992 /* KnowTT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KnowTT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		408E46322217737100E98992 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		40D1DA0B22234CEE00CD992A /* Icon-App-40x40@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-40x40@3x.png"; sourceTree = "<group>"; };
 		40D1DA0C22234CEE00CD992A /* Icon-App-29x29@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-29x29@2x.png"; sourceTree = "<group>"; };
 		40D1DA1F22234DF600CD992A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		40D1DA232225CA6A00CD992A /* UserFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewController.swift; sourceTree = "<group>"; };
 		7670DE940EFA662EA59828F8 /* Pods_KnowTT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KnowTT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A40AB0C1A07212B46C092E8A /* Pods-KnowTT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KnowTT.release.xcconfig"; path = "Target Support Files/Pods-KnowTT/Pods-KnowTT.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,6 +102,8 @@
 			isa = PBXGroup;
 			children = (
 				4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */,
+				40D1DA232225CA6A00CD992A /* UserFeedViewController.swift */,
+				402A3B292225D38A0055F0F6 /* NoteDetailedView.swift */,
 			);
 			path = UserHome;
 			sourceTree = "<group>";
@@ -342,8 +348,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4036DC12221A0A1900BD8671 /* UserHomeViewController.swift in Sources */,
+				40D1DA242225CA6A00CD992A /* UserFeedViewController.swift in Sources */,
 				408E465022193F9C00E98992 /* enhancingUIView.swift in Sources */,
 				4008FFC42219DCA200E2A361 /* RegisterView.swift in Sources */,
+				402A3B2A2225D38A0055F0F6 /* NoteDetailedView.swift in Sources */,
 				408E46352217737100E98992 /* RegisterSignView.swift in Sources */,
 				4022810C221F869900096913 /* userNote.swift in Sources */,
 				408E463B2217737100E98992 /* UCSellB.xcdatamodeld in Sources */,
