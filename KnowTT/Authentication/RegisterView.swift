@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import SCLAlertView
 
 class RegisterView: UIViewController{
     
@@ -21,6 +22,9 @@ class RegisterView: UIViewController{
     @IBOutlet weak var registerButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Fucntionality to hide keyboard
+        self.hideKeyboardWhenTappedAround()
+        //Styling Register Butoon
         registerButton.layer.cornerRadius = 15
     }
     
@@ -56,7 +60,7 @@ class RegisterView: UIViewController{
             if error != nil{
                 self.createAlert(title: "ERROR", message: "THERE HAS BEEN AN ERROR REGISTERING USER")
             }else{
-                self.createAlert(title: "User Created Successfully", message: "You can go and login now")
+                SCLAlertView().showSuccess(" Registration Success!", subTitle: "")
             }
             // ...
             guard (authResult?.user) != nil else { return }

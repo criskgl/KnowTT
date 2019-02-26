@@ -20,6 +20,9 @@ class RegisterSignView: UIViewController {
     @IBOutlet weak var signInButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Functionality to hide Keyboard
+        self.hideKeyboardWhenTappedAround() 
+        //Styling Buttons Sign In and Register
         registerButton.layer.cornerRadius = 15
         signInButton.layer.cornerRadius = 15
     }
@@ -56,6 +59,18 @@ class RegisterSignView: UIViewController {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler:{(action) in alert.dismiss(animated: true, completion: nil)}))
         
         self.present(alert, animated: true, completion: nil)
+    }
+}
+// Extension to hide keyboard when touched anywhere
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 }
 
