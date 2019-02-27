@@ -13,7 +13,28 @@ class UserFeedViewController: UIViewController, UITableViewDelegate, UITableView
     
     var myNoteList = ["Hi, this is a racoon", "Hi this is another racoon", "Hi this is a boring racoon", "Rami is a racoon","Cris is also a racoon", "IV is full of racoooooooooooooooooooooooooooooooooooooooooons" ]
     
+
+    
     var selectedNote = ""
+    
+    var noteRefresher: UIRefreshControl!
+    
+    @IBOutlet weak var PullUpToRefreshTabTitle: UINavigationItem!
+    @IBOutlet weak var noteTable: UITableView!
+    
+    
+    @IBOutlet var tabBarIconFeed: UITabBarItem!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tabBarIconFeed.badgeValue = "\(myNoteList.count)"
+        noteRefresher = UIRefreshControl()
+        //noteRefresher.attributedTitle = NSAttributedString(string: "⬆️ Pull to refresh ⬆️")
+        noteRefresher.addTarget(self , action: #selector(UserFeedViewController.populateTable), for: UIControl.Event.valueChanged)
+        
+        noteTable.addSubview(noteRefresher)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (myNoteList.count)
@@ -42,11 +63,25 @@ class UserFeedViewController: UIViewController, UITableViewDelegate, UITableView
         if editingStyle == UITableViewCell.EditingStyle.delete
         {
             myNoteList.remove(at: indexPath.row)
-            tableView.reloadData()
+            noteTable.reloadData()
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    //This function handles
+    @objc func populateTable (){
+        PullUpToRefreshTabTitle.title = "Loading Knowts"
+        for i in 1...100000
+        {
+            myNoteList.append("\(i)")
+        }
+        PullUpToRefreshTabTitle.title = "Pull Up to Refresh"
+        noteTable.reloadData()
+        noteRefresher.endRefreshing()
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = myNoteList[indexPath.row]
+    }
+    
 }

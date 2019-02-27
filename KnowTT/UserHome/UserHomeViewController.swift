@@ -15,7 +15,14 @@ import SwiftSocket
 import MapKit
 import SCLAlertView
 
-struct ACKPostNoteDecoded: Codable {
+struct PostNoteDecodedStruct: Codable {
+    var latitude: String
+    var longitude: String
+    var message: String
+    var userId: String
+}
+
+struct ACKPostNoteDecodedStruct: Codable {
     var opCode: String
     var result: String
 }
@@ -125,7 +132,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
                 let jsonData = Data(response.utf8)
                 let decoder = JSONDecoder()
                 do {
-                    let ackJsonDecoded = try decoder.decode(ACKPostNoteDecoded.self, from: jsonData)
+                    let ackJsonDecoded = try decoder.decode(ACKPostNoteDecodedStruct.self, from: jsonData)
                     if(ackJsonDecoded.opCode == "POST" && ackJsonDecoded.result == "ACK"){
                         
                         let latitudeEffectiveValue = (userLatitude as NSString).doubleValue
@@ -190,17 +197,69 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     }
     //Track the user position in real time and display it on the map
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //Update User Location
         let userLocation = locations.last
         let viewRegion = MKCoordinateRegion(center: (userLocation?.coordinate)!, latitudinalMeters: 100, longitudinalMeters: 100)
         self.userMap.setRegion(viewRegion, animated: true)
         self.userMap.showsUserLocation = true
         
-        //Save current lat & long
+        
+            //Save current lat & long
         UserDefaults.standard.set(userLocation?.coordinate.latitude, forKey: "LAT")
         UserDefaults.standard.set(userLocation?.coordinate.longitude, forKey: "LON")
         UserDefaults().synchronize()
+        
+        //Request notes when user is moving
+        //Get userId
+        let userId = "\(userMail!)"
+        
+        //MARK-- Reload Notes when user is moving
+        let noteRequest = UserNote()
+        //Get location data
+        let userLatitudeCoord = userLocation!.coordinate.latitude
+        let userLongitudeCoord = userLocation!.coordinate.longitude
+        let userLongitude = "\(userLongitudeCoord)"
+        let userLatitude = "\(userLatitudeCoord)"
+        //1.Build  the note
+        noteRequest.buildNote("GET", userId, userLatitude, userLongitude, "")
+        //2.Get the json
+        let jsonRequest = noteRequest.getJson()
+        //3.Convert json to secure String being sent
+        let dataToSend = "\(jsonRequest)"
+        //4.Send the request and recieve first response
+        var response = self.sendJson(self, dataToSend)
+        
+        var moreNotes = self.checkForMoreNotesAndPinNoteIfExists(fromStringJson: response)
+        while(moreNotes == true){
+            response = self.sendJson(self, dataToSend)
+            moreNotes = checkForMoreNotesAndPinNoteIfExists(fromStringJson: response)
+        }
     }
     
+    func checkForMoreNotesAndPinNoteIfExists(fromStringJson json: String) -> Bool{
+        //put json in required format for decoder
+        let jsonData = Data(json.utf8)
+        //create decoder
+        let decoder = JSONDecoder()
+        var moreNotes = true
+        do {
+            //Initialize Struct to save data
+            let ackJsonDecoded = try decoder.decode(PostNoteDecodedStruct.self, from: jsonData)
+            //Check if we have final end marking note
+            if(ackJsonDecoded.message == "[END]"){
+                moreNotes = false
+            }else{//If there are more notes...
+                //Get location from note
+                let latitudeEffectiveValue = (ackJsonDecoded.latitude as NSString).doubleValue
+                let longitudeEffectiveValue = (ackJsonDecoded.longitude as NSString).doubleValue
+                
+                self.pinNote(withText: ackJsonDecoded.message, inLatitude: latitudeEffectiveValue, inLongitud: longitudeEffectiveValue)
+            }
+        }catch {
+            print(error.localizedDescription)
+        }
+        return moreNotes
+    }
 }
 
 
