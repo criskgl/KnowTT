@@ -41,15 +41,29 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     //Essence of client
     var client: TCPClient?
     
+    //Prepare to change status bar color
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.style
+    }
+    var style:UIStatusBarStyle = .default
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+       self.style = .lightContent
+    }
     override func viewDidLoad() {
         //Ask user to start tracking his position
-        self.coordinatesManager.requestAlwaysAuthorization()
+        self.style = .lightContent
+ self.coordinatesManager.requestAlwaysAuthorization()
         //if the user allows, set the delegate to the same coordinatesManager
         if CLLocationManager.locationServicesEnabled(){
             coordinatesManager.delegate = self
             coordinatesManager.desiredAccuracy = kCLLocationAccuracyBest
             coordinatesManager.startUpdatingLocation()
         }
+
+        
         //Change welcome message based on user name/email
         userLoggedInText.text = "Welcome \(userMail ?? userDefault) !"
         //Invoking TCP client
@@ -71,17 +85,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         let response = sendData(string:"Hey there, Im the Iphone!", using: client!)
         appendToTextField(string: "Response: \(response!)")
         }
-    @IBAction func logOutTapped(_ sender: Any) {
-            //Disconnect Socket Client
-            #warning ("Implement disconnect form Server")
-            // Logout from Firebase
-            try! Auth.auth().signOut()
-        
-            if let storyboard = self.storyboard {
-                let vc = storyboard.instantiateViewController(withIdentifier: "startView")
-                self.present(vc, animated: false, completion: nil)
-            }
-        }
+
     #warning ("this function is for testing")
     @IBAction func connectTapped(_ sender: Any) {
         //Trying to send messages
@@ -208,7 +212,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         UserDefaults.standard.set(userLocation?.coordinate.latitude, forKey: "LAT")
         UserDefaults.standard.set(userLocation?.coordinate.longitude, forKey: "LON")
         UserDefaults().synchronize()
-        
+        /*
         //Request notes when user is moving
         //Get userId
         let userId = "\(userMail!)"
@@ -228,14 +232,16 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         let dataToSend = "\(jsonRequest)"
         //4.Send the request and recieve first response
         var response = self.sendJson(self, dataToSend)
-        
+        #warning ("This folowing line is for testing")
+        appendToTextField(string: response)
         var moreNotes = self.checkForMoreNotesAndPinNoteIfExists(fromStringJson: response)
         while(moreNotes == true){
             response = self.sendJson(self, dataToSend)
             moreNotes = checkForMoreNotesAndPinNoteIfExists(fromStringJson: response)
         }
+    */
     }
-    
+    /*
     func checkForMoreNotesAndPinNoteIfExists(fromStringJson json: String) -> Bool{
         //put json in required format for decoder
         let jsonData = Data(json.utf8)
@@ -260,6 +266,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         }
         return moreNotes
     }
+ */
 }
 
 

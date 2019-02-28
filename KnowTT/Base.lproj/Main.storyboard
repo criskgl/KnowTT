@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Megrim.ttf">
+            <string>Megrim</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Note Detailed View-->
         <scene sceneID="Kfo-yb-gYV">
@@ -51,7 +56,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I53-Ou-0hZ">
                                 <rect key="frame" x="67" y="357" width="240" height="74"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
+                                <fontDescription key="fontDescription" name="Megrim" family="Megrim" pointSize="30"/>
                                 <state key="normal" title="Knowted!">
                                     <color key="titleColor" red="1" green="0.57457399369999995" blue="0.0019781978339999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -92,7 +97,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nMN-FI-Hp8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1580" y="205.54722638680661"/>
+            <point key="canvasLocation" x="-2305" y="219"/>
         </scene>
         <!--User Feed View Controller-->
         <scene sceneID="bvy-wF-fgc">
@@ -103,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAZ-Z3-1o8">
-                                <rect key="frame" x="122" y="323" width="130" height="21"/>
+                                <rect key="frame" x="122" y="323" width="130" height="70"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -112,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2a-fr-fKn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -177,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFm-5Y-YVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-570.39999999999998" y="-567.16641679160421"/>
+            <point key="canvasLocation" x="-1353" y="-567"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5KO-Ua-OTY">
@@ -193,6 +198,7 @@
                     <connections>
                         <segue destination="2aS-vE-wKV" kind="relationship" relationship="viewControllers" id="YIx-Fw-xnw"/>
                         <segue destination="H3U-DH-7IZ" kind="relationship" relationship="viewControllers" id="OKr-BG-a1V"/>
+                        <segue destination="5NM-hC-ECl" kind="relationship" relationship="viewControllers" id="baX-Hd-yAz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qx9-ki-AGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,7 +214,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundKnowttOrangeYellow" translatesAutoresizingMaskIntoConstraints="NO" id="xQw-IU-mWh">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-fg-WBH">
                                 <rect key="frame" x="64" y="199" width="247" height="149"/>
@@ -290,7 +296,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwJ-Cp-8p8" secondAttribute="trailing" constant="64" id="Vgh-M0-j7e"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="wwJ-Cp-8p8" secondAttribute="bottom" constant="8" id="WZx-39-HmX"/>
                             <constraint firstItem="wwJ-Cp-8p8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="YOg-0z-ool"/>
-                            <constraint firstItem="xQw-IU-mWh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ylw-oY-CFi"/>
+                            <constraint firstItem="xQw-IU-mWh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="Ylw-oY-CFi"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="179" id="gfH-CX-b4B"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="khE-ax-bYf"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pH6-pL-1Rx"/>
@@ -308,7 +314,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="89" y="206"/>
+            <point key="canvasLocation" x="88.799999999999997" y="205.54722638680661"/>
         </scene>
         <!--User Home View Controller-->
         <scene sceneID="g2K-DX-0oC">
@@ -318,23 +324,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RVr-hb-XLn">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVr-hb-XLn">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="asG-Qi-ytU"/>
                                 </constraints>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Megrim" family="Megrim" pointSize="23"/>
                                     <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </textAttributes>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <fontDescription key="fontDescription" name="Megrim" family="Megrim" pointSize="23"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="KnowTT" id="Xik-24-mzQ">
-                                        <barButtonItem key="leftBarButtonItem" title="Log Out" id="Hif-9m-BpC">
-                                            <color key="tintColor" red="1" green="0.1506273591" blue="0.14241135099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <connections>
-                                                <action selector="logOutTapped:" destination="2aS-vE-wKV" id="RIX-ge-hnp"/>
-                                            </connections>
-                                        </barButtonItem>
+                                    <navigationItem title="KnowT" id="Xik-24-mzQ">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ufB-dw-zv1">
                                             <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <connections>
@@ -359,6 +363,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="JVJ-6n-elQ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Megrim" family="Megrim" pointSize="17"/>
                                 <state key="normal" title="Connect">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -390,10 +395,10 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
-                                <rect key="frame" x="0.0" y="223" width="375" height="395"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="RVr-hb-XLn" firstAttribute="top" secondItem="Gg9-bi-xG5" secondAttribute="top" id="0yA-D2-5D5"/>
                             <constraint firstItem="Gee-1B-reZ" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="3eU-GJ-7i8"/>
@@ -407,7 +412,7 @@
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Gee-1B-reZ" secondAttribute="trailing" constant="130" id="X0Z-ec-0c7"/>
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Jzj-fu-G1h" secondAttribute="trailing" constant="47" id="Ydq-ee-chE"/>
                             <constraint firstItem="Jzj-fu-G1h" firstAttribute="top" secondItem="8lz-Cw-ecc" secondAttribute="bottom" constant="8" id="Zqa-Vm-b33"/>
-                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="31" id="bxw-uh-Eih"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="-128" id="bxw-uh-Eih"/>
                             <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="RVr-hb-XLn" secondAttribute="bottom" constant="18" id="cTM-aa-0J0"/>
                             <constraint firstItem="8lz-Cw-ecc" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="eC4-Fq-1lQ"/>
                             <constraint firstItem="C1V-tn-b6U" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" id="ecd-ey-TAR"/>
@@ -427,7 +432,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNB-wF-QcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000.8" y="-567.16641679160421"/>
+            <point key="canvasLocation" x="685.60000000000002" y="-567.16641679160421"/>
+        </scene>
+        <!--User Settings View-->
+        <scene sceneID="N5I-qO-IL2">
+            <objects>
+                <viewController id="5NM-hC-ECl" customClass="UserSettingsView" customModule="KnowTT" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="v3C-DL-UzQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundKnowttOrangeYellow" translatesAutoresizingMaskIntoConstraints="NO" id="6Xe-EN-Bz4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6L-Sp-xbX">
+                                <rect key="frame" x="91" y="403" width="193" height="50"/>
+                                <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Pv2-ub-wPj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Log Out">
+                                    <color key="titleColor" red="1" green="0.1506273591" blue="0.14241135099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutTapped:" destination="5NM-hC-ECl" eventType="touchUpInside" id="EJy-Cd-rPI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OoD-68-6uJ" firstAttribute="trailing" secondItem="K6L-Sp-xbX" secondAttribute="trailing" constant="91" id="GHa-7B-n99"/>
+                            <constraint firstItem="K6L-Sp-xbX" firstAttribute="leading" secondItem="OoD-68-6uJ" secondAttribute="leading" constant="91" id="M3w-80-AYb"/>
+                            <constraint firstItem="K6L-Sp-xbX" firstAttribute="top" secondItem="OoD-68-6uJ" secondAttribute="top" constant="383" id="tza-l0-H3s"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="OoD-68-6uJ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="" image="userIcon32px" id="F68-7U-x3Z"/>
+                    <connections>
+                        <outlet property="logOutButton" destination="K6L-Sp-xbX" id="Ofd-u0-C20"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NQZ-dH-7za" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1616.8" y="-567.16641679160421"/>
         </scene>
         <!--Register View-->
         <scene sceneID="ASf-YG-aKp">
@@ -527,9 +577,11 @@
         <image name="iconfinder_back_172570-2" width="32" height="32"/>
         <image name="mapIcon32px" width="32" height="32"/>
         <image name="onlyLogoKnowTOrange" width="481" height="292"/>
+        <image name="userIcon32px" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="JqF-QY-wGP"/>
         <segue reference="xIF-Bo-XHZ"/>
-        <segue reference="OKr-BG-a1V"/>
+        <segue reference="6WI-0j-v91"/>
     </inferredMetricsTieBreakers>
 </document>
