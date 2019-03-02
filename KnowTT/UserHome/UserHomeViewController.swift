@@ -40,6 +40,9 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     var userDefault = "user unknown"
     //Essence of client
     var client: TCPClient?
+    //Timer to call datbase every X seconds to retrieve nearby notes
+    var myTimer = Timer()
+    
     
     //Prepare to change status bar color
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -53,9 +56,12 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
        self.style = .lightContent
     }
     override func viewDidLoad() {
-        //Ask user to start tracking his position
+        //Start the method were we request nearby notes to the server every X time
+        scheduledTimerWithTimeInterval()
+        //Change status bar color
         self.style = .lightContent
- self.coordinatesManager.requestAlwaysAuthorization()
+        //Ask user to start tracking his position
+        self.coordinatesManager.requestAlwaysAuthorization()
         //if the user allows, set the delegate to the same coordinatesManager
         if CLLocationManager.locationServicesEnabled(){
             coordinatesManager.delegate = self
@@ -63,7 +69,6 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
             coordinatesManager.startUpdatingLocation()
         }
 
-        
         //Change welcome message based on user name/email
         userLoggedInText.text = "Welcome \(userMail ?? userDefault) !"
         //Invoking TCP client
@@ -208,11 +213,22 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         self.userMap.showsUserLocation = true
         
         
-            //Save current lat & long
+        //Save current lat & long
         UserDefaults.standard.set(userLocation?.coordinate.latitude, forKey: "LAT")
         UserDefaults.standard.set(userLocation?.coordinate.longitude, forKey: "LON")
         UserDefaults().synchronize()
-        /*
+    
+    }
+    func scheduledTimerWithTimeInterval(){
+              print("[SCHEDULED TIMER WITH INTERVAL]")
+        // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
+        myTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(UserHomeViewController.updateCloseByNotes), userInfo: nil, repeats: true)
+    }
+    @objc func updateCloseByNotes(){
+        print("[UPDATE CLOSE BY NOTES]")
+        let number = Int.random(in: 0 ..< 100)
+        appendToTextField(string: "\(number)")
+        
         //Request notes when user is moving
         //Get userId
         let userId = "\(userMail!)"
@@ -220,8 +236,9 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         //MARK-- Reload Notes when user is moving
         let noteRequest = UserNote()
         //Get location data
-        let userLatitudeCoord = userLocation!.coordinate.latitude
-        let userLongitudeCoord = userLocation!.coordinate.longitude
+        let coordinate =  CLLocationCoordinate2D(latitude: UserDefaults.standard.value(forKey: "LAT") as! CLLocationDegrees, longitude: UserDefaults.standard.value(forKey: "LON") as! CLLocationDegrees)//Get last location saved.
+        let userLatitudeCoord = coordinate.latitude
+        let userLongitudeCoord = coordinate.longitude
         let userLongitude = "\(userLongitudeCoord)"
         let userLatitude = "\(userLatitudeCoord)"
         //1.Build  the note
@@ -230,19 +247,19 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         let jsonRequest = noteRequest.getJson()
         //3.Convert json to secure String being sent
         let dataToSend = "\(jsonRequest)"
+        print(dataToSend)
         //4.Send the request and recieve first response
         var response = self.sendJson(self, dataToSend)
         #warning ("This folowing line is for testing")
         appendToTextField(string: response)
-        var moreNotes = self.checkForMoreNotesAndPinNoteIfExists(fromStringJson: response)
+        var moreNotes = self.pinNoteAndCheckForMore(fromStringJson: response)
         while(moreNotes == true){
             response = self.sendJson(self, dataToSend)
-            moreNotes = checkForMoreNotesAndPinNoteIfExists(fromStringJson: response)
+            moreNotes = pinNoteAndCheckForMore(fromStringJson: response)
         }
-    */
     }
-    /*
-    func checkForMoreNotesAndPinNoteIfExists(fromStringJson json: String) -> Bool{
+    
+    func pinNoteAndCheckForMore(fromStringJson json: String) -> Bool{
         //put json in required format for decoder
         let jsonData = Data(json.utf8)
         //create decoder
@@ -263,10 +280,12 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
             }
         }catch {
             print(error.localizedDescription)
+            moreNotes = false
+            return moreNotes
         }
         return moreNotes
     }
- */
+ 
 }
 
 

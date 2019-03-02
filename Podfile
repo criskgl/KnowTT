@@ -12,4 +12,5 @@ target 'KnowTT' do
   pod 'Socket.IO-Client-Swift', '~> 14.0.0'
   pod 'SwiftSocket'
   pod 'SCLAlertView'
+  pod 'Canvas'
 end

@@ -286,20 +286,32 @@
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onlyLogoKnowTOrange" translatesAutoresizingMaskIntoConstraints="NO" id="wwJ-Cp-8p8">
                                 <rect key="frame" x="64" y="62" width="247" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="yAh-vv-Rxr"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="type" value="slideLeft"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="duration">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="delay">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99853295087814331" green="0.72991132736206055" blue="0.0049731340259313583" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pi2-fg-WBH" secondAttribute="trailing" constant="64" id="1NR-1n-uxt"/>
-                            <constraint firstItem="wwJ-Cp-8p8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="BR0-gH-H9s"/>
+                            <constraint firstItem="wwJ-Cp-8p8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="Aq4-Qd-RMg"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Jtz-Pq-XfI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwJ-Cp-8p8" secondAttribute="trailing" constant="64" id="Vgh-M0-j7e"/>
-                            <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="wwJ-Cp-8p8" secondAttribute="bottom" constant="8" id="WZx-39-HmX"/>
-                            <constraint firstItem="wwJ-Cp-8p8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="YOg-0z-ool"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="-20" id="Ylw-oY-CFi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwJ-Cp-8p8" secondAttribute="trailing" constant="64" id="cPd-az-uFL"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="179" id="gfH-CX-b4B"/>
+                            <constraint firstItem="pi2-fg-WBH" firstAttribute="top" secondItem="wwJ-Cp-8p8" secondAttribute="bottom" constant="8" id="iaS-ji-m4e"/>
                             <constraint firstItem="pi2-fg-WBH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="khE-ax-bYf"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pH6-pL-1Rx"/>
+                            <constraint firstItem="wwJ-Cp-8p8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="t7E-VH-uaC"/>
                             <constraint firstItem="xQw-IU-mWh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="uhA-Kl-j1t"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -395,7 +407,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <rect key="frame" x="0.0" y="228" width="375" height="390"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -412,7 +424,7 @@
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Gee-1B-reZ" secondAttribute="trailing" constant="130" id="X0Z-ec-0c7"/>
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Jzj-fu-G1h" secondAttribute="trailing" constant="47" id="Ydq-ee-chE"/>
                             <constraint firstItem="Jzj-fu-G1h" firstAttribute="top" secondItem="8lz-Cw-ecc" secondAttribute="bottom" constant="8" id="Zqa-Vm-b33"/>
-                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="-128" id="bxw-uh-Eih"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="36" id="bxw-uh-Eih"/>
                             <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="RVr-hb-XLn" secondAttribute="bottom" constant="18" id="cTM-aa-0J0"/>
                             <constraint firstItem="8lz-Cw-ecc" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="eC4-Fq-1lQ"/>
                             <constraint firstItem="C1V-tn-b6U" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" id="ecd-ey-TAR"/>
@@ -580,7 +592,6 @@
         <image name="userIcon32px" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JqF-QY-wGP"/>
         <segue reference="xIF-Bo-XHZ"/>
         <segue reference="6WI-0j-v91"/>
     </inferredMetricsTieBreakers>

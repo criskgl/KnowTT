@@ -1,4 +1,5 @@
 PODS:
+  - Canvas (0.1.2)
   - Firebase/Auth (5.16.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.3.0)
@@ -73,6 +74,7 @@ PODS:
   - SwiftSocket (2.0.2)
 
 DEPENDENCIES:
+  - Canvas
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
@@ -82,6 +84,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Canvas
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -100,6 +103,7 @@ SPEC REPOS:
     - SwiftSocket
 
 SPEC CHECKSUMS:
+  Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
   FirebaseAnalytics: d35d47c03c50c73c14a7fd31463c5775843e78a9
   FirebaseAuth: c9b3ff063c223d2841d97240af547ce511bce19a
@@ -117,6 +121,6 @@ SPEC CHECKSUMS:
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: 148d2900ebddd3a6e6dbee91be389e96aa690b6d
+PODFILE CHECKSUM: 80bcaca59a4a02a990fd5d971d66809e699253de
 
 COCOAPODS: 1.6.0

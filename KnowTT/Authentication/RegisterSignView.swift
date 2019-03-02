@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import Canvas
+import SCLAlertView
 
 class RegisterSignView: UIViewController {
     //Outlets
@@ -25,6 +27,7 @@ class RegisterSignView: UIViewController {
         //Styling Buttons Sign In and Register
         registerButton.layer.cornerRadius = 15
         signInButton.layer.cornerRadius = 15
+        
     }
 
     //Actions from Storyboard
