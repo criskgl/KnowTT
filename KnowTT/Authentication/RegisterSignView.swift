@@ -11,15 +11,21 @@ import UIKit
 import FirebaseAuth
 import Canvas
 import SCLAlertView
+import JGProgressHUD
+
+
+
 
 class RegisterSignView: UIViewController {
     //Outlets
     @IBOutlet weak var userMail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
-    
     @IBOutlet weak var registerButton: UIButton!
-    
     @IBOutlet weak var signInButton: UIButton!
+    
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Functionality to hide Keyboard
@@ -29,7 +35,6 @@ class RegisterSignView: UIViewController {
         signInButton.layer.cornerRadius = 15
         
     }
-
     //Actions from Storyboard
     @IBAction func signInTouched(_ sender: Any) {
         guard
@@ -41,7 +46,9 @@ class RegisterSignView: UIViewController {
                 self.createAlert(title: "Invalid entry ", message: "Please fill all the fields")
                 return
             }
-        
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Signing in..."
+        hud.show(in: self.view)
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error, user == nil {
                 let alert = UIAlertController(title: "Sign In Failed",
@@ -55,6 +62,7 @@ class RegisterSignView: UIViewController {
                 self.performSegue(withIdentifier: "RegisterSignToUserHome", sender: self)
             }
         }
+        hud.dismiss(afterDelay: 2.0)
     }
     func createAlert(title:String, message:String){
         let alert = UIAlertController(title: title, message: message,  preferredStyle: UIAlertController.Style.alert)

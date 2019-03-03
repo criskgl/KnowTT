@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import SCLAlertView
+import JGProgressHUD
 
 class RegisterView: UIViewController{
     
@@ -34,8 +35,11 @@ class RegisterView: UIViewController{
         
         let password = userPassword.text!
         
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Adding New Member..."
+        hud.show(in: self.view)
         registerUser(email, password)
-        
+        hud.dismiss(afterDelay: 1.0)
     }
     
     @IBAction func cancelTouched(_ sender: Any) {

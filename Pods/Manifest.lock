@@ -61,6 +61,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - JGProgressHUD (2.0.3)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - JGProgressHUD
   - SCLAlertView
   - Socket.IO-Client-Swift (~> 14.0.0)
   - SwiftSocket
@@ -95,6 +97,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - JGProgressHUD
     - leveldb-library
     - nanopb
     - SCLAlertView
@@ -114,6 +117,7 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
@@ -121,6 +125,6 @@ SPEC CHECKSUMS:
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
 
-PODFILE CHECKSUM: 80bcaca59a4a02a990fd5d971d66809e699253de
+PODFILE CHECKSUM: 4f84b4ff3950fc31d340a9d0e86bed5675e67fc1
 
 COCOAPODS: 1.6.0

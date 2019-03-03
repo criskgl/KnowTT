@@ -13,4 +13,5 @@ target 'KnowTT' do
   pod 'SwiftSocket'
   pod 'SCLAlertView'
   pod 'Canvas'
+  pod 'JGProgressHUD'
 end
