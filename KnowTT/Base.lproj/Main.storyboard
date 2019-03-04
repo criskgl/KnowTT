@@ -326,7 +326,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="88.799999999999997" y="205.54722638680661"/>
+            <point key="canvasLocation" x="393" y="218"/>
         </scene>
         <!--User Home View Controller-->
         <scene sceneID="g2K-DX-0oC">
@@ -407,7 +407,7 @@
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
-                                <rect key="frame" x="0.0" y="228" width="375" height="390"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -424,7 +424,7 @@
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Gee-1B-reZ" secondAttribute="trailing" constant="130" id="X0Z-ec-0c7"/>
                             <constraint firstItem="Gg9-bi-xG5" firstAttribute="trailing" secondItem="Jzj-fu-G1h" secondAttribute="trailing" constant="47" id="Ydq-ee-chE"/>
                             <constraint firstItem="Jzj-fu-G1h" firstAttribute="top" secondItem="8lz-Cw-ecc" secondAttribute="bottom" constant="8" id="Zqa-Vm-b33"/>
-                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="36" id="bxw-uh-Eih"/>
+                            <constraint firstItem="C1V-tn-b6U" firstAttribute="top" secondItem="Gee-1B-reZ" secondAttribute="bottom" constant="-128" id="bxw-uh-Eih"/>
                             <constraint firstItem="hl9-3v-4WV" firstAttribute="top" secondItem="RVr-hb-XLn" secondAttribute="bottom" constant="18" id="cTM-aa-0J0"/>
                             <constraint firstItem="8lz-Cw-ecc" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" constant="46" id="eC4-Fq-1lQ"/>
                             <constraint firstItem="C1V-tn-b6U" firstAttribute="leading" secondItem="Gg9-bi-xG5" secondAttribute="leading" id="ecd-ey-TAR"/>
@@ -444,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNB-wF-QcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="685.60000000000002" y="-567.16641679160421"/>
+            <point key="canvasLocation" x="-338.39999999999998" y="-567.16641679160421"/>
         </scene>
         <!--User Settings View-->
         <scene sceneID="N5I-qO-IL2">
@@ -454,9 +454,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="backgroundKnowttOrangeYellow" translatesAutoresizingMaskIntoConstraints="NO" id="6Xe-EN-Bz4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundKnowttOrangeYellow" translatesAutoresizingMaskIntoConstraints="NO" id="6Xe-EN-Bz4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6L-Sp-xbX">
                                 <rect key="frame" x="91" y="403" width="193" height="50"/>
@@ -476,9 +475,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="6Xe-EN-Bz4" firstAttribute="trailing" secondItem="OoD-68-6uJ" secondAttribute="trailing" id="BZf-Tf-gYS"/>
                             <constraint firstItem="OoD-68-6uJ" firstAttribute="trailing" secondItem="K6L-Sp-xbX" secondAttribute="trailing" constant="91" id="GHa-7B-n99"/>
                             <constraint firstItem="K6L-Sp-xbX" firstAttribute="leading" secondItem="OoD-68-6uJ" secondAttribute="leading" constant="91" id="M3w-80-AYb"/>
+                            <constraint firstItem="6Xe-EN-Bz4" firstAttribute="leading" secondItem="OoD-68-6uJ" secondAttribute="leading" id="VjI-Dq-nDJ"/>
+                            <constraint firstAttribute="bottom" secondItem="6Xe-EN-Bz4" secondAttribute="bottom" id="ZTY-st-oO3"/>
                             <constraint firstItem="K6L-Sp-xbX" firstAttribute="top" secondItem="OoD-68-6uJ" secondAttribute="top" constant="383" id="tza-l0-H3s"/>
+                            <constraint firstItem="6Xe-EN-Bz4" firstAttribute="top" secondItem="v3C-DL-UzQ" secondAttribute="top" id="wCQ-gW-uFL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OoD-68-6uJ"/>
                     </view>
@@ -489,7 +492,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQZ-dH-7za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1616.8" y="-567.16641679160421"/>
+            <point key="canvasLocation" x="1415" y="-567"/>
         </scene>
         <!--Register View-->
         <scene sceneID="ASf-YG-aKp">

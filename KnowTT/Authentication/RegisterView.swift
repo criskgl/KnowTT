@@ -11,6 +11,7 @@ import UIKit
 import FirebaseAuth
 import SCLAlertView
 import JGProgressHUD
+import SwiftSocket
 
 class RegisterView: UIViewController{
     
@@ -19,6 +20,8 @@ class RegisterView: UIViewController{
     
     var userRegistered = ""
     
+    //Essence of client
+    var client: TCPClient?
     
     @IBOutlet weak var registerButton: UIButton!
     override func viewDidLoad() {
@@ -46,25 +49,41 @@ class RegisterView: UIViewController{
                 self.performSegue(withIdentifier: "registerToSignRegister", sender: self)
     }
     func registerUser(_ email:String, _ password:String){
-        //Control the input
+        //Control the input is not blank
         guard
             let email = userMail.text,
             let password = userPassword.text,
             email.count > 0,
             password.count > 0
             else {
-                self.createAlert(title: "Invalid entry", message: "Please fill all the fields. password at least 6 characters")
+                self.createAlert(title: "Invalid entry", message: "Please fill all the fields. Password at least 6 characters")
                 return
         }
+        guard
+            isValidEmail(testStr: email) == true
+            else {
+                SCLAlertView().showWarning("Invalid Email", subTitle: "You need to have a UCSB email to register")
+                return
+        }
+        
         Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+            /*
             if error == nil {//sign in outomatically after registering
                 Auth.auth().signIn(withEmail: self.userMail.text!,
                                    password: self.userPassword.text!)
             }
+            */
             if error != nil{
-                self.createAlert(title: "ERROR", message: "THERE HAS BEEN AN ERROR REGISTERING USER")
+                SCLAlertView().showError("Registration Error", subTitle: "There has been a problem adding new member. Check that you dont already have a KnowT account")
             }else{
-                SCLAlertView().showSuccess(" Registration Success!", subTitle: "")
+                //notify registration of own servers
+                let registerRequest = UserNote()
+                registerRequest.buildNote("REGISTER", Auth.auth().currentUser!.email!, "", "", "")
+                let json = registerRequest.getJson()
+                let dataToSend = "\(json)"
+                //let response = self.sendJson(self, dataToSend)
+                //print("RESPONSE FROM SERVER AFTER REGSITER: ", response)
+                SCLAlertView().showSuccess("Registration Success!", subTitle: "")
             }
             // ...
             guard (authResult?.user) != nil else { return }
@@ -83,4 +102,39 @@ class RegisterView: UIViewController{
         self.present(alert, animated: true, completion: nil)
     }
     
+    //NETWORKING FUNCTIONS
+    func sendJson(_ sender: Any, _ jsonString: String) -> String{
+        
+        if let response = sendData(string: jsonString, using: client!){
+            print("Result from server: ", response)
+            print("Response: \(response)")
+            return response
+        }
+        return "[ERROR][sendJson]"
+    }
+    
+    //uses readResponse
+    private func sendData(string: String, using client: TCPClient) -> String? {
+        print("Iphone Sending Data . . .")
+        switch client.send(string: string) {
+        case .success:
+            print("The data has been succesfully sent")
+            return readResponse(from: client) //This is returning the string read from server
+        case .failure(let error):
+            print(String(describing: error))
+            return nil
+        }
+    }
+    
+    private func readResponse(from client: TCPClient) -> String? {
+        guard let response = client.read(1024*10, timeout: 10) else {return nil}
+        return String(bytes: response, encoding: .ascii)
+    }
+    
+    private func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@ucsb+\\.edu"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
 }

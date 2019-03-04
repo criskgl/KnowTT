@@ -22,6 +22,8 @@
 		408E463B2217737100E98992 /* UCSellB.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 408E46392217737100E98992 /* UCSellB.xcdatamodeld */; };
 		408E46402217737200E98992 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 408E463E2217737200E98992 /* LaunchScreen.storyboard */; };
 		408E465022193F9C00E98992 /* enhancingUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408E464F22193F9C00E98992 /* enhancingUIView.swift */; };
+		4096295C222BB7DE009EAB43 /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4096295B222BB7DE009EAB43 /* CustomAnnotation.swift */; };
+		4096295E222BB857009EAB43 /* CallOutView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4096295D222BB857009EAB43 /* CallOutView.xib */; };
 		40C08C71221B64F600804E5E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C08C70221B64F600804E5E /* GoogleService-Info.plist */; };
 		40CEEDD7221B680C00F839A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40CEEDD6221B680C00F839A6 /* Default-568h@2x.png */; };
 		40D1DA0D22234CEE00CD992A /* Icon-App-76x76@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 40D1D9FD22234CEE00CD992A /* Icon-App-76x76@2x.png */; };
@@ -64,6 +66,8 @@
 		408E463F2217737200E98992 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		408E46412217737200E98992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		408E464F22193F9C00E98992 /* enhancingUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enhancingUIView.swift; sourceTree = "<group>"; };
+		4096295B222BB7DE009EAB43 /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		4096295D222BB857009EAB43 /* CallOutView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CallOutView.xib; sourceTree = "<group>"; };
 		40C08C70221B64F600804E5E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40CEEDD6221B680C00F839A6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		40D1D9FD22234CEE00CD992A /* Icon-App-76x76@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-App-76x76@2x.png"; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 				408E46392217737100E98992 /* UCSellB.xcdatamodeld */,
 				408E464F22193F9C00E98992 /* enhancingUIView.swift */,
 				40C08C70221B64F600804E5E /* GoogleService-Info.plist */,
+				4096295B222BB7DE009EAB43 /* CustomAnnotation.swift */,
+				4096295D222BB857009EAB43 /* CallOutView.xib */,
 			);
 			path = KnowTT;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 				40D1DA1C22234CEE00CD992A /* Icon-App-29x29@2x.png in Resources */,
 				408E46382217737100E98992 /* Main.storyboard in Resources */,
 				40D1DA1022234CEE00CD992A /* Icon-App-20x20@1x.png in Resources */,
+				4096295E222BB857009EAB43 /* CallOutView.xib in Resources */,
 				40D1DA1822234CEE00CD992A /* Icon-App-60x60@3x.png in Resources */,
 				405BD0932227D0BE00DF79B2 /* Megrim.ttf in Resources */,
 				40D1DA1422234CEE00CD992A /* Contents.json in Resources */,
@@ -384,6 +391,7 @@
 				408E465022193F9C00E98992 /* enhancingUIView.swift in Sources */,
 				4008FFC42219DCA200E2A361 /* RegisterView.swift in Sources */,
 				402A3B2A2225D38A0055F0F6 /* NoteDetailedView.swift in Sources */,
+				4096295C222BB7DE009EAB43 /* CustomAnnotation.swift in Sources */,
 				408E46352217737100E98992 /* RegisterSignView.swift in Sources */,
 				4022810C221F869900096913 /* userNote.swift in Sources */,
 				408E463B2217737100E98992 /* UCSellB.xcdatamodeld in Sources */,

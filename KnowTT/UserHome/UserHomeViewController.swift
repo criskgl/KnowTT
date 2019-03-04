@@ -56,8 +56,17 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
        self.style = .lightContent
     }
     override func viewDidLoad() {
+        
+        
+        
+        /********************/
         //Start the method were we request nearby notes to the server every X time
-        scheduledTimerWithTimeInterval()
+        #warning ("This to be built later TODO...")
+        //scheduledTimerWithTimeInterval()
+        /********************/
+        
+        
+        
         //Change status bar color
         self.style = .lightContent
         //Ask user to start tracking his position
@@ -222,7 +231,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     func scheduledTimerWithTimeInterval(){
               print("[SCHEDULED TIMER WITH INTERVAL]")
         // Scheduling timer to Call the function "updateCounting" with the interval of 1 seconds
-        myTimer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(UserHomeViewController.updateCloseByNotes), userInfo: nil, repeats: true)
+        myTimer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(UserHomeViewController.updateCloseByNotes), userInfo: nil, repeats: true)
     }
     @objc func updateCloseByNotes(){
         print("[UPDATE CLOSE BY NOTES]")
@@ -255,6 +264,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         var moreNotes = self.pinNoteAndCheckForMore(fromStringJson: response)
         while(moreNotes == true){
             response = self.sendJson(self, dataToSend)
+            print("THIS IS THE RESPONSEEEE: \(response)")
             moreNotes = pinNoteAndCheckForMore(fromStringJson: response)
         }
     }
@@ -285,7 +295,9 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         }
         return moreNotes
     }
+    
  
 }
+
 
 
