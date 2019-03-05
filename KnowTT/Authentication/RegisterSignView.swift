@@ -37,7 +37,7 @@ class RegisterSignView: UIViewController {
     }
     //Actions from Storyboard
     @IBAction func signInTouched(_ sender: Any) {
-        guard
+        guard //Take care of not long enough
             let email = userMail.text,
             let password = userPassword.text,
             email.count > 0,
@@ -46,6 +46,14 @@ class RegisterSignView: UIViewController {
                 self.createAlert(title: "Invalid entry ", message: "Please fill all the fields")
                 return
             }
+        print("EMILIO", Auth.auth().currentUser!.email)
+        print("VERIFICADO", Auth.auth().currentUser!.isEmailVerified)
+        guard //Take care of unverified users
+            Auth.auth().currentUser!.isEmailVerified == true
+            else {
+                SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified", userMail.text ?? ""))
+            return
+        }
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Signing in..."
         hud.show(in: self.view)

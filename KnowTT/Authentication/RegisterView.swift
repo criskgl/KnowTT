@@ -17,6 +17,7 @@ class RegisterView: UIViewController{
     
     @IBOutlet weak var userMail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
+    @IBOutlet weak var verifyEmailButton: UIButton!
     
     var userRegistered = ""
     
@@ -24,12 +25,33 @@ class RegisterView: UIViewController{
     var client: TCPClient?
     
     @IBOutlet weak var registerButton: UIButton!
+    
+    //Prepare to change status bar color
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.style
+    }
+    var style:UIStatusBarStyle = .default
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Fucntionality to hide keyboard
         self.hideKeyboardWhenTappedAround()
         //Styling Register Butoon
         registerButton.layer.cornerRadius = 15
+        //Style status bar
+        self.style = .lightContent
+    }
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        verifyEmailButton.isHidden = true
+    }
+    
+    
+    @IBAction func goToLogin(_ sender: Any) {
+        self.performSegue(withIdentifier: "registerToSignRegister", sender: self)
     }
     
     @IBAction func submitRegistration(_ sender: UIButton) {
@@ -45,9 +67,6 @@ class RegisterView: UIViewController{
         hud.dismiss(afterDelay: 1.0)
     }
     
-    @IBAction func cancelTouched(_ sender: Any) {
-                self.performSegue(withIdentifier: "registerToSignRegister", sender: self)
-    }
     func registerUser(_ email:String, _ password:String){
         //Control the input is not blank
         guard
@@ -56,7 +75,7 @@ class RegisterView: UIViewController{
             email.count > 0,
             password.count > 0
             else {
-                self.createAlert(title: "Invalid entry", message: "Please fill all the fields. Password at least 6 characters")
+                SCLAlertView().showWarning("Invalid entry", subTitle: "Please fill all the fields. Password has to be at least 6 characters")
                 return
         }
         guard
@@ -73,9 +92,9 @@ class RegisterView: UIViewController{
                                    password: self.userPassword.text!)
             }
             */
-            if error != nil{
-                SCLAlertView().showError("Registration Error", subTitle: "There has been a problem adding new member. Check that you dont already have a KnowT account")
-            }else{
+            if error != nil{//ERROR REGISTERING USER
+                SCLAlertView().showError("Registration Error", subTitle: "There has been a problem adding new member. Check if you already have a KnowT account")
+            }else{//NO ERROR REGISTERING USER
                 //notify registration of own servers
                 let registerRequest = UserNote()
                 registerRequest.buildNote("REGISTER", Auth.auth().currentUser!.email!, "", "", "")
@@ -83,15 +102,40 @@ class RegisterView: UIViewController{
                 let dataToSend = "\(json)"
                 //let response = self.sendJson(self, dataToSend)
                 //print("RESPONSE FROM SERVER AFTER REGSITER: ", response)
-                SCLAlertView().showSuccess("Registration Success!", subTitle: "")
+                Auth.auth().currentUser?.sendEmailVerification { (error) in
+                    if error != nil { //ERROR
+                        SCLAlertView().showError("Email Verification", subTitle: "We could not send the verification email")
+                    }else{//NO ERROR
+                        //Tell user to verify email
+                        SCLAlertView().showInfo("Verification email  Sent", subTitle: "")
+                        //Show user that the registration has been completed
+                        SCLAlertView().showSuccess("Registration Success", subTitle: "You just need to verify your email to sign in")
+                        self.verifyEmailButton.isHidden = false
+                    }
+                }
+                
             }
             // ...
             guard (authResult?.user) != nil else { return }
-            
         }
         //clean up for future ocassions
         userMail.text = ""
         userPassword.text = ""
+    }
+    
+    
+    @IBAction func verifyEmailTouched(_ sender: Any) {
+        self.sendVerificationEmail()
+    }
+    
+    @objc private func sendVerificationEmail(){
+        Auth.auth().currentUser?.sendEmailVerification { (error) in
+            if error != nil { //ERROR
+                SCLAlertView().showWarning("Email Verification", subTitle: "A verification email has been already sent to \(Auth.auth().currentUser!.email ?? "")")
+            }else{//NO ERROR
+                SCLAlertView().showInfo("Verification Email sent", subTitle: "Follow the link we sent to \(Auth.auth().currentUser!.email ?? "") to verify your account")
+            }
+        }
     }
     
     func createAlert(title:String, message:String){
@@ -101,6 +145,7 @@ class RegisterView: UIViewController{
         
         self.present(alert, animated: true, completion: nil)
     }
+    
     
     //NETWORKING FUNCTIONS
     func sendJson(_ sender: Any, _ jsonString: String) -> String{

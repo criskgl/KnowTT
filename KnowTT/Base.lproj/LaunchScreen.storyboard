@@ -18,16 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splashOrangeYellow" translatesAutoresizingMaskIntoConstraints="NO" id="2xG-qA-RhZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundKnowttOrangeYellow" translatesAutoresizingMaskIntoConstraints="NO" id="hJM-U9-ew3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onlyLogoKnowTOrange" translatesAutoresizingMaskIntoConstraints="NO" id="mbB-eP-Wod">
+                                <rect key="frame" x="64" y="62" width="247" height="129"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="129" id="6v4-ot-K6e"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.86105847358703613" green="0.80530691146850586" blue="0.30922961235046387" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="2xG-qA-RhZ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="1ad-dh-Rrj"/>
-                            <constraint firstItem="2xG-qA-RhZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CGH-Rj-OZw"/>
-                            <constraint firstItem="2xG-qA-RhZ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="tfk-hc-HBv"/>
-                            <constraint firstItem="2xG-qA-RhZ" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="wvu-IG-GJ6"/>
+                            <constraint firstItem="mbB-eP-Wod" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="64" id="1OI-Qn-Tf4"/>
+                            <constraint firstItem="hJM-U9-ew3" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="2qK-xc-1Hd"/>
+                            <constraint firstItem="mbB-eP-Wod" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="42" id="8oa-jb-IL2"/>
+                            <constraint firstItem="hJM-U9-ew3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="cYA-LA-EWF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mbB-eP-Wod" secondAttribute="trailing" constant="64" id="n2J-0a-RTT"/>
+                            <constraint firstItem="hJM-U9-ew3" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="qkJ-Bh-vQ1"/>
+                            <constraint firstItem="hJM-U9-ew3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xez-29-Bcz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -38,6 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splashOrangeYellow" width="1080" height="1920"/>
+        <image name="backgroundKnowttOrangeYellow" width="1080" height="1920"/>
+        <image name="onlyLogoKnowTOrange" width="481" height="292"/>
     </resources>
 </document>
