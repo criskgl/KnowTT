@@ -33,7 +33,8 @@ class RegisterSignView: UIViewController {
         //Styling Buttons Sign In and Register
         registerButton.layer.cornerRadius = 15
         signInButton.layer.cornerRadius = 15
-        
+        Auth.auth().currentUser?.getIDTokenForcingRefresh(true)
+        Auth.auth().currentUser?.reload()
     }
     //Actions from Storyboard
     @IBAction func signInTouched(_ sender: Any) {
@@ -46,12 +47,12 @@ class RegisterSignView: UIViewController {
                 self.createAlert(title: "Invalid entry ", message: "Please fill all the fields")
                 return
             }
-        print("EMILIO", Auth.auth().currentUser!.email)
-        print("VERIFICADO", Auth.auth().currentUser!.isEmailVerified)
+        Auth.auth().currentUser?.getIDTokenForcingRefresh(true)
+        Auth.auth().currentUser?.reload()
         guard //Take care of unverified users
             Auth.auth().currentUser!.isEmailVerified == true
             else {
-                SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified", userMail.text ?? ""))
+                SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", userMail.text ?? ""))
             return
         }
         let hud = JGProgressHUD(style: .dark)
