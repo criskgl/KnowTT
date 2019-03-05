@@ -389,7 +389,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UCSB mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhb-eY-U3j">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="UCSB mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bhb-eY-U3j">
                                 <rect key="frame" x="49" y="156" width="276" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="SZp-Bc-7hq"/>
@@ -403,7 +403,7 @@
                         <constraints>
                             <constraint firstItem="bhb-eY-U3j" firstAttribute="leading" secondItem="f9n-tT-956" secondAttribute="leading" constant="49" id="9h4-xB-deE"/>
                             <constraint firstItem="aQe-Fj-Onx" firstAttribute="trailing" secondItem="f9n-tT-956" secondAttribute="trailing" id="BNj-bD-Jwe"/>
-                            <constraint firstItem="f9n-tT-956" firstAttribute="trailing" secondItem="bhb-eY-U3j" secondAttribute="trailing" constant="76" id="CKp-Qt-6u7"/>
+                            <constraint firstItem="f9n-tT-956" firstAttribute="trailing" secondItem="bhb-eY-U3j" secondAttribute="trailing" constant="50" id="CKp-Qt-6u7"/>
                             <constraint firstItem="p97-Qi-4eX" firstAttribute="trailing" secondItem="f9n-tT-956" secondAttribute="trailing" id="DgD-Hf-TKB"/>
                             <constraint firstItem="wdH-m3-s10" firstAttribute="top" secondItem="aQe-Fj-Onx" secondAttribute="bottom" constant="23" id="Dku-yE-aGh"/>
                             <constraint firstItem="p97-Qi-4eX" firstAttribute="leading" secondItem="f9n-tT-956" secondAttribute="leading" id="K2B-dB-UTZ"/>
@@ -672,7 +672,7 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vg-7r-klt">
-                                <rect key="frame" x="102" y="447" width="171" height="41"/>
+                                <rect key="frame" x="59" y="447" width="257" height="41"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="al3-bc-O0b"/>
                                 </constraints>
@@ -706,8 +706,8 @@
                             <constraint firstItem="83c-bc-Myd" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="62" id="jDv-ah-A2x"/>
                             <constraint firstItem="BSP-zm-KNs" firstAttribute="top" secondItem="5ki-UM-YPT" secondAttribute="top" id="mxw-BF-IRE"/>
                             <constraint firstItem="mFS-jB-1ee" firstAttribute="trailing" secondItem="kZQ-Ih-0vf" secondAttribute="trailing" constant="63" id="pqu-9E-aba"/>
-                            <constraint firstItem="mFS-jB-1ee" firstAttribute="trailing" secondItem="5Vg-7r-klt" secondAttribute="trailing" constant="102" id="q1f-TW-mjF"/>
-                            <constraint firstItem="5Vg-7r-klt" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="102" id="qzz-yz-i9R"/>
+                            <constraint firstItem="mFS-jB-1ee" firstAttribute="trailing" secondItem="5Vg-7r-klt" secondAttribute="trailing" constant="59" id="q1f-TW-mjF"/>
+                            <constraint firstItem="5Vg-7r-klt" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="59" id="qzz-yz-i9R"/>
                             <constraint firstItem="kD8-Jl-W78" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="62" id="ux7-S8-VRq"/>
                             <constraint firstItem="PNW-fD-miy" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="62" id="wpg-cQ-lKk"/>
                             <constraint firstItem="BSP-zm-KNs" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" id="xdY-zp-xh4"/>
@@ -737,7 +737,7 @@
         <image name="userIcon32px" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zoR-V5-yOB"/>
+        <segue reference="Ni7-hZ-ffR"/>
         <segue reference="6WI-0j-v91"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -73,7 +73,7 @@ class RegisterView: UIViewController{
             let email = userMail.text,
             let password = userPassword.text,
             email.count > 0,
-            password.count > 0
+            password.count > 6
             else {
                 SCLAlertView().showWarning("Invalid entry", subTitle: "Please fill all the fields. Password has to be at least 6 characters")
                 return

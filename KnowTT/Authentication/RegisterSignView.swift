@@ -35,6 +35,8 @@ class RegisterSignView: UIViewController {
         signInButton.layer.cornerRadius = 15
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true)
         Auth.auth().currentUser?.reload()
+        print("\n\n\n\n\n\nHERE",Auth.auth().currentUser?.email)
+            print("")
     }
     //Actions from Storyboard
 
@@ -51,12 +53,15 @@ class RegisterSignView: UIViewController {
             }
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true)
         Auth.auth().currentUser?.reload()
+        
         guard //Take care of unverified users
-            Auth.auth().currentUser!.isEmailVerified == true
+            Auth.auth().currentUser?.isEmailVerified == true
             else {
-                SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", userMail.text ?? ""))
-            return
-        }
+                    SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", userMail.text ?? ""))
+                    return
+            }
+    
+        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Signing in..."
         hud.show(in: self.view)
