@@ -9,19 +9,30 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import SCLAlertView
 
 class ForgotPassword: UIViewController {
     @IBOutlet weak var emailUser: UITextField!
     @IBOutlet weak var sendEmailButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-    sendEmailButton.layer.cornerRadius = 15
+        sendEmailButton.layer.cornerRadius = 15
+        //Functionality to hide Keyboard
+        self.hideKeyboardWhenTappedAround() 
     }
     @IBAction func sendResetEmailTouched(_ sender: Any) {
         guard
-            
-    Auth.auth().sendPasswordReset(withEmail: emailUser.text!) { error in
-            // ...
+            emailUser.text!.count > 0
+            else{
+                SCLAlertView().showWarning("Please provide your email", subTitle: "")
+                return
+        }
+        Auth.auth().sendPasswordReset(withEmail: emailUser.text!) { error in
+            if error != nil {//ERROR
+                SCLAlertView().showError("Error Sending chaging email", subTitle: "")
+            }else{
+                SCLAlertView().showSuccess("Email to reset password sent", subTitle: "")
+            }
         }
     }
 }
