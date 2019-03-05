@@ -17,23 +17,20 @@ class RegisterView: UIViewController{
     
     @IBOutlet weak var userMail: UITextField!
     @IBOutlet weak var userPassword: UITextField!
+    @IBOutlet weak var userConfirmPassword: UITextField!
+    
     @IBOutlet weak var verifyEmailButton: UIButton!
-    
     var userRegistered = ""
-    
     //Essence of client
     var client: TCPClient?
-    
     @IBOutlet weak var registerButton: UIButton!
-    
     //Prepare to change status bar color
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.style
     }
+    
     var style:UIStatusBarStyle = .default
-    
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Fucntionality to hide keyboard
@@ -72,16 +69,34 @@ class RegisterView: UIViewController{
         guard
             let email = userMail.text,
             let password = userPassword.text,
+            let passwordConfirmation = userConfirmPassword.text,
             email.count > 0,
-            password.count > 6
+            password.count > 0,
+            passwordConfirmation.count > 0
             else {
-                SCLAlertView().showWarning("Invalid entry", subTitle: "Please fill all the fields. Password has to be at least 6 characters")
+                SCLAlertView().showWarning("Invalid entry", subTitle: "Please fill all the fields")
                 return
         }
+        //Control it is a ucsb email
         guard
             isValidEmail(testStr: email) == true
             else {
                 SCLAlertView().showWarning("Invalid Email", subTitle: "You need to have a UCSB email to register")
+                return
+        }
+        //Check if passwords match
+        guard
+            userPassword.text == userConfirmPassword.text
+            else{
+                SCLAlertView().showWarning("Passwords don't match", subTitle: "You need to type the same password twice")
+                return
+        }
+        //Control the password is at least 6 characters
+        guard
+            let passwordLongEnough = userPassword.text,
+            passwordLongEnough.count > 0
+            else {
+                SCLAlertView().showWarning("Invalid entry", subTitle: "Password has to be longer than 6 characters")
                 return
         }
         
