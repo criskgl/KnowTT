@@ -37,6 +37,8 @@ class RegisterSignView: UIViewController {
         Auth.auth().currentUser?.reload()
     }
     //Actions from Storyboard
+
+    
     @IBAction func signInTouched(_ sender: Any) {
         guard //Take care of not long enough
             let email = userMail.text,

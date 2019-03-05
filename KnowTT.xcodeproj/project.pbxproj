@@ -12,6 +12,7 @@
 		402A3B2A2225D38A0055F0F6 /* NoteDetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402A3B292225D38A0055F0F6 /* NoteDetailedView.swift */; };
 		40342B992226A8D500A8CF3B /* UserSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40342B982226A8D500A8CF3B /* UserSettingsView.swift */; };
 		4036DC12221A0A1900BD8671 /* UserHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */; };
+		4053765B222E3C450002A5B0 /* ForgorPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4053765A222E3C450002A5B0 /* ForgorPassword.swift */; };
 		405BD0902227D0BE00DF79B2 /* Megrim.sfd in Resources */ = {isa = PBXBuildFile; fileRef = 405BD08C2227D0BE00DF79B2 /* Megrim.sfd */; };
 		405BD0912227D0BE00DF79B2 /* FONTLOG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 405BD08D2227D0BE00DF79B2 /* FONTLOG.txt */; };
 		405BD0922227D0BE00DF79B2 /* license-ofl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 405BD08E2227D0BE00DF79B2 /* license-ofl.txt */; };
@@ -54,6 +55,7 @@
 		402A3B292225D38A0055F0F6 /* NoteDetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailedView.swift; sourceTree = "<group>"; };
 		40342B982226A8D500A8CF3B /* UserSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsView.swift; sourceTree = "<group>"; };
 		4036DC11221A0A1900BD8671 /* UserHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeViewController.swift; sourceTree = "<group>"; };
+		4053765A222E3C450002A5B0 /* ForgorPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgorPassword.swift; sourceTree = "<group>"; };
 		405BD08C2227D0BE00DF79B2 /* Megrim.sfd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Megrim.sfd; sourceTree = "<group>"; };
 		405BD08D2227D0BE00DF79B2 /* FONTLOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FONTLOG.txt; sourceTree = "<group>"; };
 		405BD08E2227D0BE00DF79B2 /* license-ofl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "license-ofl.txt"; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				408E46342217737100E98992 /* RegisterSignView.swift */,
 				4008FFC32219DCA200E2A361 /* RegisterView.swift */,
+				4053765A222E3C450002A5B0 /* ForgorPassword.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40342B992226A8D500A8CF3B /* UserSettingsView.swift in Sources */,
+				4053765B222E3C450002A5B0 /* ForgorPassword.swift in Sources */,
 				4036DC12221A0A1900BD8671 /* UserHomeViewController.swift in Sources */,
 				40D1DA242225CA6A00CD992A /* UserFeedViewController.swift in Sources */,
 				408E465022193F9C00E98992 /* enhancingUIView.swift in Sources */,
