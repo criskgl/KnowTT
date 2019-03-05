@@ -29,7 +29,7 @@ class ForgotPassword: UIViewController {
         }
         Auth.auth().sendPasswordReset(withEmail: emailUser.text!) { error in
             if error != nil {//ERROR
-                SCLAlertView().showError("Error Sending chaging email", subTitle: "")
+                SCLAlertView().showError("Error sending password reset email", subTitle: "")
             }else{
                 SCLAlertView().showSuccess("Email to reset password sent", subTitle: "")
             }
