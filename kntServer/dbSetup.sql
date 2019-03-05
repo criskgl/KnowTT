@@ -10,5 +10,8 @@ CREATE TABLE IF NOT EXISTS notes (
 	longitude DOUBLE NOT NULL,
 	message VARCHAR(128) NOT NULL,
 	creation_time DATETIME NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES users(user_id)
+	FOREIGN KEY (user_id)
+		REFERENCES users(user_id)
+		ON DELETE CASCADE
+		ON UPDATE CASCADE
 );

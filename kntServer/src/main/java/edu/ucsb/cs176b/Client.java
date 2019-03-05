@@ -33,6 +33,8 @@ public class Client {
 		Note note;
 		String message="";
 
+		String[] myNoteSet;
+
 		byte[] bufr = new byte[1024];
 
 
@@ -204,16 +206,38 @@ public class Client {
 						dos.write(gson.toJson(myRequest).getBytes());	//Send request
 
 						// printing date or time as requested by client
+						note = new Note();
 						dis.read(bufr);
 						note_s = new String(bufr);
-						note = gson.fromJson(note_s.trim(),Note.class);
+						myNoteSet = note_s.split("(?<=})");
+
+						for (String a : myNoteSet){
+							try{
+								note = gson.fromJson(a,Note.class);
+								System.out.println(note);
+							}
+							catch(Exception e){
+
+							}
+						}
+
 
 						while(!note.getMessage().equals("[END]")){	//TODO: CHANGE CODE AND PREVENT USER FROM WRITTING THIS MESSAGE
-							System.out.println(note);	//Print previous note
 
 							dis.read(bufr);
 							note_s = new String(bufr);	//Get next note
-							note = gson.fromJson(note_s.trim(),Note.class);
+
+							myNoteSet = note_s.split("(?<=})");
+							for (String a : myNoteSet){
+								try{
+									note = gson.fromJson(a,Note.class);
+									System.out.println(note);
+								}
+								catch(Exception e){
+
+								}
+							}
+
 						}
 
 						System.out.println("END");

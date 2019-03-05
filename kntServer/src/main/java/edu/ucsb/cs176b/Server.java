@@ -108,7 +108,6 @@ class ClientHandler extends Thread {
 				bufs = new String(bufr);
 				System.out.println(bufs);
 				request = gson.fromJson(bufs.trim(), Request.class);
-				System.out.println(gson.toJson(request));	//DELETE
 
 
 				if(request.getOpCode().equals("EXIT")) {
@@ -121,91 +120,89 @@ class ClientHandler extends Thread {
 
 				reqAck.setOpCode(request.getOpCode());
 				user_i = getUserIndex(request.getUserId());
-				System.out.println(request.getUserId() + "\tindex: " + user_i);
+				//System.out.println(request.getUserId() + "\tindex: " + user_i);
 
 				switch(request.getOpCode()){
 					case "REGISTER":
-						if(user_i>=0){
+						try{
+							dbHandler.registerUser(new User(request.getUserId(),false));
+							reqAck.setResult("ACK");
+						}
+						catch(Exception e){
+							System.out.println(e);
 							reqAck.setResult("ERROR");
 						}
-						else{	//Register
-							try{
-								usersDB.add(new User(request.getUserId(),false));
-								dbHandler.registerUser(new User(request.getUserId(),false));
-								reqAck.setResult("ACK");
-							}
-							catch(Exception e){
-								System.out.println(e);
-								reqAck.setResult("ERROR");
-							}
-						}
-
 					break;
 					case "UNREGISTER":
-						if(user_i<0){
-							reqAck.setResult("ERROR");
-						}
-						else{
-							usersDB.remove(user_i);
+						try{
+							dbHandler.unregisterUser(request.getUserId());
 							reqAck.setResult("ACK");
+						}
+						catch(Exception e){
+							System.out.println(e);
+							reqAck.setResult("ERROR");
 						}
 					break;
 					case "CONNECT":
-						if(user_i<0){	//Not registered
-							reqAck.setResult("ERROR");
+						try{
+							if(!dbHandler.isConnected(request.getUserId())){
+								dbHandler.connectUser(request.getUserId());
+								reqAck.setResult("ACK");
+							}
+							else{
+								reqAck.setResult("ERROR");
+							}
 						}
-						else if(usersDB.get(user_i).getConnected()){	//Already connected
+						catch(Exception e){
+							System.out.println(e);
 							reqAck.setResult("ERROR");
-						}
-						else{
-							usersDB.get(user_i).setConnected(true);
-							reqAck.setResult("ACK");
 						}
 					break;
 					case "DISCONNECT":
-						System.out.println("1");
-						if(user_i<0){	//Not registered
-							reqAck.setResult("ERROR");
+						try{
+							if(dbHandler.isConnected(request.getUserId())){
+								dbHandler.disconnectUser(request.getUserId());
+								reqAck.setResult("ACK");
+							}
+							else{
+								reqAck.setResult("ERROR");
+							}
 						}
-						else if(!usersDB.get(user_i).getConnected()){	//Already disconnected
+						catch(Exception e){
+							System.out.println(e);
 							reqAck.setResult("ERROR");
-						}
-						else{
-							System.out.println("2");
-							usersDB.get(user_i).setConnected(false);
-							reqAck.setResult("ACK");
 						}
 					break;
 					case "POST":
-						if(user_i<0){
-							reqAck.setResult("ERROR");
-						}
-						else if(!usersDB.get(user_i).getConnected()){	//Disconnected
-							reqAck.setResult("ERROR");
-						}
-						else{
-							notesDB.add(new Note(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),request.getMessage(),request.getUserId()));
-							try{
+						try{
+							if(dbHandler.isConnected(request.getUserId())){
 								dbHandler.insertNote(new Note(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),request.getMessage(),request.getUserId()));
 								reqAck.setResult("ACK");
 							}
-							catch (Exception e){
+							else{
 								reqAck.setResult("ERROR");
-								System.out.println(e);
 							}
+						}
+						catch(Exception e){
+							System.out.println(e);
+							reqAck.setResult("ERROR");
 						}
 					break;
 					case "GET":
-						if(user_i<0){
-							reqAck.setResult("ERROR");
-						}
-						else if(!usersDB.get(user_i).getConnected()){	//Disconnected
-							reqAck.setResult("ERROR");
-						}
-						else{
-							for(Note note : notesDB){
-								dos.write(gson.toJson(note).getBytes());
+						try{
+							if(dbHandler.isConnected(request.getUserId())){
+								dbHandler.getNotes(Double.parseDouble(request.getLatitude()),Double.parseDouble(request.getLongitude()),notesDB);
+								for(Note note : notesDB){
+									dos.write(gson.toJson(note).getBytes());
+								}
+								dos.write(gson.toJson(new Note(0.0,0.0,"[END]","")).getBytes());
 							}
+							else{
+								dos.write(gson.toJson(new Note(0.0,0.0,"[END]","")).getBytes());
+							}
+						}
+						catch(Exception e){
+							System.out.println(e);
 							dos.write(gson.toJson(new Note(0.0,0.0,"[END]","")).getBytes());
 						}
 					break;
