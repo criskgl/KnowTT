@@ -78,7 +78,7 @@ class RegisterSignView: UIViewController {
                         SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", self.userMail.text!))
                     //Sign out the user from firebase
                         try! Auth.auth().signOut()
-                        return
+                    return
                 }
                 //Email has been verified
                 self.performSegue(withIdentifier: "RegisterSignToUserHome", sender: self)

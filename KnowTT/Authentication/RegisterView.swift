@@ -68,6 +68,11 @@ class RegisterView: UIViewController{
     }
     
     func registerUser(_ email:String, _ password:String){
+        //---All input controls passed
+        //show loader
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Adding New Member..."
+        hud.show(in: self.view)
         
         //Control the input is not blank
         guard
@@ -79,6 +84,8 @@ class RegisterView: UIViewController{
             passwordConfirmation.count > 0
             else {
                 SCLAlertView().showWarning("Invalid entry", subTitle: "Please fill all the fields")
+                //hide loader
+                hud.dismiss()
                 return
         }
         //Control it is a ucsb email
@@ -86,6 +93,8 @@ class RegisterView: UIViewController{
             isValidEmail(testStr: email) == true
             else {
                 SCLAlertView().showWarning("Invalid Email", subTitle: "You need to have a UCSB email to register")
+                //hide loader
+                hud.dismiss()
                 return
         }
         //Check if passwords match
@@ -93,6 +102,8 @@ class RegisterView: UIViewController{
             userPassword.text == userConfirmPassword.text
             else{
                 SCLAlertView().showWarning("Passwords don't match", subTitle: "You need to type the same password twice")
+                //hide loader
+                hud.dismiss()
                 return
         }
         //Control the password is at least 6 characters
@@ -101,14 +112,11 @@ class RegisterView: UIViewController{
             passwordLongEnough.count > 0
             else {
                 SCLAlertView().showWarning("Invalid entry", subTitle: "Password has to be longer than 6 characters")
+                //hide loader
+                hud.dismiss()
                 return
         }
-        //---All input controls passed
-        //show loader
-        let hud = JGProgressHUD(style: .dark)
-        hud.textLabel.text = "Adding New Member..."
-        hud.show(in: self.view)
-        hud.dismiss(afterDelay: 3.0)
+        
         
         //Connect to OWN server
         switch client!.connect(timeout: 10) {
