@@ -176,15 +176,15 @@
 		408E46312217737100E98992 /* KnowTT */ = {
 			isa = PBXGroup;
 			children = (
+				408E46362217737100E98992 /* Main.storyboard */,
+				408E463E2217737200E98992 /* LaunchScreen.storyboard */,
 				405BD08B2227D0BE00DF79B2 /* megrim */,
 				4022810D221F904300096913 /* Aux Objects */,
-				408E46362217737100E98992 /* Main.storyboard */,
 				4003C66B221BB8B5009B9EC4 /* UserHome */,
 				4036DC10221A09C100BD8671 /* Authentication */,
 				408E46322217737100E98992 /* AppDelegate.swift */,
 				40D1DA1F22234DF600CD992A /* Assets.xcassets */,
 				40D1D9FC22234CEE00CD992A /* AppIcon.appiconset */,
-				408E463E2217737200E98992 /* LaunchScreen.storyboard */,
 				408E46412217737200E98992 /* Info.plist */,
 				408E46392217737100E98992 /* UCSellB.xcdatamodeld */,
 				408E464F22193F9C00E98992 /* enhancingUIView.swift */,
