@@ -12,6 +12,7 @@ import FirebaseAuth
 import Canvas
 import SCLAlertView
 import JGProgressHUD
+import SCLAlertView
 
 
 
@@ -35,8 +36,13 @@ class RegisterSignView: UIViewController {
         signInButton.layer.cornerRadius = 15
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true)
         Auth.auth().currentUser?.reload()
-        print("\n\n\n\n\n\nHERE",Auth.auth().currentUser?.email)
-            print("")
+        
+        #warning ("used for testing purposes")
+        if(Auth.auth().currentUser?.email == nil){
+            print("Firebase Debug: No user connected")
+        }else{
+            print("Firebase Debug: user \(Auth.auth().currentUser!.email!) is connected")
+        }
     }
     //Actions from Storyboard
 
@@ -48,37 +54,37 @@ class RegisterSignView: UIViewController {
             email.count > 0,
             password.count > 0
             else {
-                self.createAlert(title: "Invalid entry ", message: "Please fill all the fields")
+                SCLAlertView().showWarning("Invalid entry", subTitle: "Please fill all the fields")
                 return
             }
+        //Reload user data in Firebase
         Auth.auth().currentUser?.getIDTokenForcingRefresh(true)
         Auth.auth().currentUser?.reload()
-        
-        guard //Take care of unverified users
-            Auth.auth().currentUser?.isEmailVerified == true
-            else {
-                    SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", userMail.text ?? ""))
-                    return
-            }
     
-        
         let hud = JGProgressHUD(style: .dark)
         hud.textLabel.text = "Signing in..."
         hud.show(in: self.view)
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error, user == nil {
-                let alert = UIAlertController(title: "Sign In Failed",
-                                              message: error.localizedDescription,
-                                              preferredStyle: .alert)
-                
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                
-                self.present(alert, animated: true, completion: nil)
+                //Sign in failed
+                SCLAlertView().showError("Error Signing in", subTitle: error.localizedDescription)
             }else{
+                //Sign in successfull
+                //--Check if email has been verified
+                guard //Take care of unverified users
+                    Auth.auth().currentUser?.isEmailVerified == true
+                    else {
+                    //If email not verified
+                        SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", self.userMail.text!))
+                    //Sign out the user from firebase
+                        try! Auth.auth().signOut()
+                        return
+                }
+                //Email has been verified
                 self.performSegue(withIdentifier: "RegisterSignToUserHome", sender: self)
             }
         }
-        hud.dismiss(afterDelay: 2.0)
+        hud.dismiss()
     }
     func createAlert(title:String, message:String){
         let alert = UIAlertController(title: title, message: message,  preferredStyle: UIAlertController.Style.alert)

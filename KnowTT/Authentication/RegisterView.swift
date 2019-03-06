@@ -46,14 +46,6 @@ class RegisterView: UIViewController{
         self.style = .lightContent
         //Invoking TCP client
         client = TCPClient(address: "142.93.204.52", port: 8080)
-        //Connect to server
-        switch client!.connect(timeout: 10) {
-        case .success:
-            print("Connected to host")
-        case .failure(let error):
-            print("HE FASHADO")
-            print(String(describing: error))
-        }
     }
    
     override func viewDidAppear(_ animated: Bool) {
@@ -118,52 +110,66 @@ class RegisterView: UIViewController{
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 3.0)
         
-        //notify registration in own servers
+        //Connect to OWN server
+        switch client!.connect(timeout: 10) {
+        case .success:
+            print("Connected to host")
+        case .failure(let error):
+            print("conectar a OWN server en Register ha fallado")
+            print(String(describing: error))
+        }
+        //notify registration OWN servers
         let registerRequest = UserNote()
         registerRequest.buildNote("REGISTER", userMail.text!, "", "", "")
         let json = registerRequest.getJson()
         let dataToSend = "\(json)"
         let response = self.sendJson(self, dataToSend)
+        
         print("\n\n\nRESPONSE FROM SERVER AFTER REGSITER: ", response)
         let jsonData = Data(response.utf8)
         let decoder = JSONDecoder()
-        do {
-            let ackJsonDecoded = try decoder.decode(ACKRegisterDecodedStruct.self, from: jsonData)
-            if(ackJsonDecoded.opCode == "REGISTER" && ackJsonDecoded.result == "ACK"){
-                //---Server added user to OWN database
-                //-------Then add to Firebase Database
-                Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
-                    /*
-                     if error == nil {//sign in outomatically after registering
-                     Auth.auth().signIn(withEmail: self.userMail.text!,
-                     password: self.userPassword.text!)
-                     }
-                     */
-                    if error != nil{//ERROR REGISTERING USER
-                        SCLAlertView().showError("Registration Error", subTitle: "There has been a problem adding new member. Check if you already have a KnowT account")
-                    }else{//NO ERROR REGISTERING USER
-                        Auth.auth().currentUser?.sendEmailVerification { (error) in
-                            if error != nil { //ERROR
-                                SCLAlertView().showError("Email Verification", subTitle: "We could not send the verification email")
-                            }else{//NO ERROR
-                                //Tell user to verify email
-                                SCLAlertView().showInfo("Verification email  Sent", subTitle: "")
-                                //Show user that the registration has been completed
-                                SCLAlertView().showSuccess("Registration Success", subTitle: "You just need to verify your email to sign in")
-                                self.verifyEmailButton.isHidden = false
+        if(response != "[ERROR][sendJson]"){//Own Server did respond
+            do {
+                let ackJsonDecoded = try decoder.decode(ACKRegisterDecodedStruct.self, from: jsonData)
+                if(ackJsonDecoded.opCode == "REGISTER" && ackJsonDecoded.result == "ACK"){
+                    //---Server added user to OWN database
+                    //-------Then add to Firebase Database
+                    Auth.auth().createUser(withEmail: email, password: password) { (authResult, error) in
+                        /*
+                         if error == nil {//sign in outomatically after registering
+                         Auth.auth().signIn(withEmail: self.userMail.text!,
+                         password: self.userPassword.text!)
+                         }
+                         */
+                        if error != nil{//ERROR REGISTERING USER
+                            SCLAlertView().showError("Registration Error", subTitle: "There has been a problem adding new member. Check if you already have a KnowT account")
+                        }else{//NO ERROR REGISTERING USER
+                            Auth.auth().currentUser?.sendEmailVerification { (error) in
+                                if error != nil { //ERROR
+                                    SCLAlertView().showError("Email Verification", subTitle: "We could not send the verification email")
+                                }else{//NO ERROR
+                                    //Tell user to verify email
+                                    SCLAlertView().showInfo("Verification email  Sent", subTitle: "")
+                                    //Show user that the registration has been completed
+                                    SCLAlertView().showSuccess("Registration Success", subTitle: "You just need to verify your email to sign in")
+                                    self.verifyEmailButton.isHidden = false
+                                }
                             }
+                            
                         }
-                        
+                        guard (authResult?.user) != nil else { return }
                     }
-                    guard (authResult?.user) != nil else { return }
+                }else if(ackJsonDecoded.opCode == "REGISTER" && ackJsonDecoded.result == "ERROR"){
+                    //--Server could not ACK adding user to OWN database
+                    SCLAlertView().showError("Registration Error", subTitle: "Our Servers couldn't process your request, please try again in a few minutes.")
                 }
-            }else if(ackJsonDecoded.opCode == "REGISTER" && ackJsonDecoded.result == "ERROR"){
-                //--Server could not ACK adding user to OWN database
-                SCLAlertView().showError("Registration Error", subTitle: "Our Servers are down at the moment, please try again in a few minutes.")
+            } catch {
+                print(error.localizedDescription)
             }
-        } catch {
-            print(error.localizedDescription)
+        }else{//OWN server did not respond
+            SCLAlertView().showError("Registration Error", subTitle: "Our Servers are unavailable at the moment, please try again in a few minutes.")
         }
+        
         //clean up for future ocassions
         userMail.text = ""
         userPassword.text = ""
