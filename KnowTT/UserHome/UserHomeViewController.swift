@@ -86,6 +86,10 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         #warning ("Implement security handshake")
     
     }
+    
+    @IBAction func goToLogOut(_ sender: Any) {
+        self.performSegue(withIdentifier: "goToLogOut", sender: self)
+    }
     #warning ("this function is for testing")
     @IBAction func connectAndSend(_ sender: Any) {
         let response = sendData(string:"Hey there, Im the Iphone!", using: client!)
@@ -297,7 +301,14 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         return moreNotes
     }
     
- 
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "goToLogOut"){
+            let userSettingsController  = segue.destination as?  UserSettingsView
+            userSettingsController?.client = self.client
+        }
+    }
 }
 
 

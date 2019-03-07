@@ -504,6 +504,17 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="mutedStandard" showsUserLocation="YES" showsCompass="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-tn-b6U">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2n7-gP-mlc">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="Go to Logout" id="v1I-9U-6EE">
+                                        <connections>
+                                            <action selector="goToLogOut:" destination="2aS-vE-wKV" id="0hp-7o-KNa"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -535,11 +546,12 @@
                         <outlet property="userLoggedInText" destination="hl9-3v-4WV" id="f88-Jt-hKr"/>
                         <outlet property="userMap" destination="C1V-tn-b6U" id="yJw-Jv-bHA"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="userHomeToStart" id="xIF-Bo-XHZ"/>
+                        <segue destination="5NM-hC-ECl" kind="show" identifier="goToLogOut" id="agZ-1u-aRJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JNB-wF-QcH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-484" y="-551.87406296851577"/>
+            <point key="canvasLocation" x="-481" y="-539"/>
         </scene>
         <!--User Settings View-->
         <scene sceneID="N5I-qO-IL2">
@@ -587,7 +599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQZ-dH-7za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279" y="-488"/>
+            <point key="canvasLocation" x="1206" y="-539"/>
         </scene>
         <!--Register View-->
         <scene sceneID="ASf-YG-aKp">

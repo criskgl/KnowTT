@@ -23,8 +23,6 @@ class UserSettingsView: UIViewController {
     override func viewDidLoad(){
         super.viewDidLoad()
         logOutButton.layer.cornerRadius = 15
-        //Invoking TCP client
-        client = TCPClient(address: "142.93.204.52", port: 8080)
     }
     
      @IBAction func logOutTapped(_ sender: Any) {
