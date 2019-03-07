@@ -14,6 +14,7 @@ import SocketIO
 import SwiftSocket
 import MapKit
 import SCLAlertView
+import JGProgressHUD
 
 struct PostNoteDecodedStruct: Codable {
     var latitude: String
@@ -111,7 +112,14 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         }
     }
 
- 
+    
+    @IBAction func refreshNotes(_ sender: Any) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Refreshing Notes..."
+        hud.show(in: self.view)
+        updateCloseByNotes()
+        hud.dismiss()
+    }
     
     @IBAction func addNoteTouched(_ sender: Any) {
         //Set opcode
@@ -221,7 +229,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         let mapCamera = MKMapCamera()
         mapCamera.centerCoordinate = (locations.last?.coordinate)!
         mapCamera.pitch = 60
-        mapCamera.altitude = 100 // example altitude
+        mapCamera.altitude = 125 // example altitude
         mapCamera.heading = 0
         
         // set the camera property

@@ -12,6 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import SwiftSocket
 import SCLAlertView
+import JGProgressHUD
 
 class UserSettingsView: UIViewController {
     
@@ -31,6 +32,10 @@ class UserSettingsView: UIViewController {
          1.Disconnect -> mark user as disconnected
          2.Exit --> close connection
          */
+        //Loader
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Logging out..."
+        hud.show(in: self.view)
         do{
             let disconnectRequest = UserNote()
             disconnectRequest.buildNote("DISCONNECT", Auth.auth().currentUser!.email!, "", "", "")
@@ -88,6 +93,7 @@ class UserSettingsView: UIViewController {
             let vc = storyboard.instantiateViewController(withIdentifier: "startView")
             self.present(vc, animated: false, completion: nil)
         }
+        hud.dismiss()
      }
     
     //Disconnect Socket Client
