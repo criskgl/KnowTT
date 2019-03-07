@@ -306,7 +306,7 @@
                                 </constraints>
                                 <state key="normal" title="Forgot Password?"/>
                                 <connections>
-                                    <segue destination="gdV-1x-ldn" kind="presentation" id="196-Yh-lmg"/>
+                                    <segue destination="gdV-1x-ldn" kind="presentation" identifier="toForgotPasswordView" id="196-Yh-lmg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -339,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="392.80000000000001" y="217.24137931034485"/>
+            <point key="canvasLocation" x="305" y="238"/>
         </scene>
         <!--Forgot Password-->
         <scene sceneID="MTL-CV-vnT">
@@ -749,7 +749,7 @@
         <image name="userIcon32px" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xIF-Bo-XHZ"/>
+        <segue reference="Ni7-hZ-ffR"/>
         <segue reference="6WI-0j-v91"/>
     </inferredMetricsTieBreakers>
 </document>

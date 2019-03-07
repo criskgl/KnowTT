@@ -156,8 +156,8 @@ class RegisterView: UIViewController{
                                 if error != nil { //ERROR
                                     SCLAlertView().showError("Email Verification", subTitle: "We could not send the verification email")
                                 }else{//NO ERROR
-                                    //Tell user to verify email
-                                    SCLAlertView().showInfo("Verification email  Sent", subTitle: "")
+                                    //Tell user to vericication email has been sent
+                                    SCLAlertView().showInfo("Verification email  sent", subTitle: "Check your inbox to find the verification E-mail")
                                     //Show user that the registration has been completed
                                     SCLAlertView().showSuccess("Registration Success", subTitle: "You just need to verify your email to sign in")
                                     self.verifyEmailButton.isHidden = false
@@ -194,9 +194,10 @@ class RegisterView: UIViewController{
     @objc private func sendVerificationEmail(){
         Auth.auth().currentUser?.sendEmailVerification { (error) in
             if error != nil { //ERROR
-                SCLAlertView().showWarning("Email Verification", subTitle: "A verification email has been already sent to \(Auth.auth().currentUser!.email ?? "")")
+                SCLAlertView().showError("Email Verification", subTitle: "There has been an error sending the verification E-mail")
             }else{//NO ERROR
-                SCLAlertView().showInfo("Verification Email sent", subTitle: "Follow the link we sent to \(Auth.auth().currentUser!.email ?? "") to verify your account")
+                //Verification email sent successfully
+                SCLAlertView().showInfo("Verification email  sent", subTitle: "Check your inbox to find the verification E-mail")
             }
         }
     }

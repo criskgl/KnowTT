@@ -24,7 +24,8 @@ class RegisterSignView: UIViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
     
-    
+    var emailToVerify = ""
+    var passToVerify = ""
 
     
     override func viewDidLoad() {
@@ -66,21 +67,31 @@ class RegisterSignView: UIViewController {
         hud.show(in: self.view)
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error, user == nil {
-                //Sign in failed
+                //Firebase Sign in Failed
                 SCLAlertView().showError("Error Signing in", subTitle: error.localizedDescription)
             }else{
-                //Sign in successfull
+                //Firebase Sign in Success
                 //--Check if email has been verified
                 guard //Take care of unverified users
                     Auth.auth().currentUser?.isEmailVerified == true
                     else {
-                    //If email not verified
-                        SCLAlertView().showWarning("Email Verification", subTitle:                 String(format: "Your email %@ has not yet been verified. If you already verified it, try again in 5 seconds", self.userMail.text!))
+                    //--If email not verified
+                        let emailNotVerifiedAlert = SCLAlertView()
+                        //save values to entered to later send the verification email
+                        self.passToVerify = self.userPassword.text!
+                        self.emailToVerify = self.userMail.text!
+                        
+                        emailNotVerifiedAlert.addButton("Send Verification E-mail") {
+                            //self.performSegue(withIdentifier: "toForgotPasswordView", sender: self)
+                            sendVerificationEmail(withEmail: self.emailToVerify, withPassword: self.passToVerify)
+                        }
+                        emailNotVerifiedAlert.showWarning("E-mail verification required", subTitle: "If you have already verified it try again in 5 seconds")
                     //Sign out the user from firebase
                         try! Auth.auth().signOut()
                     return
                 }
-                //Email has been verified
+                //--Email has been verified
+                //Go to user home
                 self.performSegue(withIdentifier: "RegisterSignToUserHome", sender: self)
             }
         }
@@ -104,6 +115,24 @@ extension UIViewController {
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+}
+//Function to send verification email
+private func sendVerificationEmail(withEmail email: String, withPassword password: String){
+    Auth.auth().signIn(withEmail: email, password: password) { user, error in
+        if let error = error, user == nil {//--Firebase Sign in Failed
+            SCLAlertView().showError("Error Signing in", subTitle: error.localizedDescription)
+        }else{//--Firebase Sign in Success
+            //Send verification email
+            Auth.auth().currentUser?.sendEmailVerification { (error) in
+                if error != nil { //ERROR
+                    SCLAlertView().showError("Email Verification", subTitle: "There has been an error sending the verification E-mail")
+                }else{//NO ERROR
+                    //Verification email sent successfully
+                    SCLAlertView().showInfo("Verification email  sent", subTitle: "Check your inbox to find the verification E-mail")
+                }
+            }
+        }
     }
 }
 
