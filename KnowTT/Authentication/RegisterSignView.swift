@@ -167,13 +167,10 @@ class RegisterSignView: UIViewController {
         hud.dismiss()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.destination is TertiaryViewController
-        {
-            let vc = segue.destination as? TertiaryViewController
-            vc?.username = "Arthur Dent"
-        }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //get the destination controller and cast it to your detail class
+        let userHomeController  = segue.destination as!  UserHomeViewController
+        userHomeController.client = self.client
     }
     
     func createAlert(title:String, message:String){

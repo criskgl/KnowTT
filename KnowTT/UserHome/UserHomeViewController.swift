@@ -81,7 +81,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         //Change welcome message based on user name/email
         userLoggedInText.text = "Welcome \(userMail ?? userDefault) !"
         //Invoking TCP client
-        client = TCPClient(address: "142.93.204.52", port: 8080)
+        //client = TCPClient(address: "142.93.204.52", port: 8080)
         super.viewDidLoad()
         #warning ("Implement security handshake")
     
