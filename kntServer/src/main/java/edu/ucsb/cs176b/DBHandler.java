@@ -10,16 +10,18 @@ public class DBHandler {
 	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
-
+	//static private String connectionString = "jdbc:mysql://localhost/KnowT?"
+	//				+ "user=kntadmin&password=elcejas69&&serverTimezone=UTC";
+	static private String connectionString = "jdbc:mysql://localhost/kntDB?"
+					+ "user=kntadmin&password=&&serverTimezone=UTC";
 	public void getNotes(double userLat, double userLon, List<Note> result) throws Exception{
 
 		try {
 			//Class.forName("com.mysql.cj.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			String query = "SELECT * FROM kntDB.notes WHERE (latitude BETWEEN ? AND ? ) AND (longitude BETWEEN ? AND ? )";
+			String query = "SELECT * FROM notes WHERE (latitude BETWEEN ? AND ? ) AND (longitude BETWEEN ? AND ? )";
 			preparedStatement = connect.prepareStatement(query);
 			preparedStatement.setDouble(1,(userLat-0.0001));
 			preparedStatement.setDouble(2,(userLat+0.0001));
@@ -42,10 +44,9 @@ public class DBHandler {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			preparedStatement = connect.prepareStatement("INSERT INTO kntDB.notes VALUES"+
+			preparedStatement = connect.prepareStatement("INSERT INTO notes VALUES"+
 								"(default, ?, ?, ?, ?, ?)");
 			System.out.println(note.getCreationTime());
 			preparedStatement.setString(1,note.getUserId());
@@ -67,10 +68,9 @@ public class DBHandler {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			preparedStatement = connect.prepareStatement("INSERT INTO kntDB.users VALUES"+
+			preparedStatement = connect.prepareStatement("INSERT INTO users VALUES"+
 								"(?, ?)");
 			preparedStatement.setString(1,user.getUserId());
 			preparedStatement.setBoolean(2,user.getConnected());
@@ -89,10 +89,9 @@ public class DBHandler {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			preparedStatement = connect.prepareStatement("DELETE FROM kntDB.users WHERE user_id="+
+			preparedStatement = connect.prepareStatement("DELETE FROM users WHERE user_id="+
 			"(?)");
 			preparedStatement.setString(1,userId);
 			preparedStatement.executeUpdate();
@@ -109,10 +108,9 @@ public class DBHandler {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			preparedStatement = connect.prepareStatement("UPDATE kntDB.users SET connected="+
+			preparedStatement = connect.prepareStatement("UPDATE users SET connected="+
 								"(?)"+"WHERE user_id="+"(?)");
 			preparedStatement.setBoolean(1,true);
 			preparedStatement.setString(2,userId);
@@ -130,10 +128,9 @@ public class DBHandler {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			String query = "SELECT connected FROM kntDB.users WHERE user_id = ?";
+			String query = "SELECT connected FROM users WHERE user_id = ?";
 
 			preparedStatement = connect.prepareStatement(query);
 			preparedStatement.setString(1,userId);
@@ -154,10 +151,9 @@ public class DBHandler {
 		try {
 			//Class.forName("com.mysql.jdbc.Driver");
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/kntDB?"
-					+ "user=kntadmin&password=&&serverTimezone=UTC");
+					.getConnection(connectionString);
 
-			preparedStatement = connect.prepareStatement("UPDATE kntDB.users SET connected="+
+			preparedStatement = connect.prepareStatement("UPDATE users SET connected="+
 								"(?)"+"WHERE user_id="+"(?)");
 			preparedStatement.setBoolean(1,false);
 			preparedStatement.setString(2,userId);

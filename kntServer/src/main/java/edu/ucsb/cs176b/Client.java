@@ -45,7 +45,7 @@ public class Client {
 			InetAddress ip = InetAddress.getByName("localhost");
 
 			// establish the connection with server port 5056
-			Socket s = new Socket(ip, 5056);
+			Socket s = new Socket(ip, 8080);
 
 			// obtaining input and out streams
 			DataInputStream dis = new DataInputStream(s.getInputStream());
