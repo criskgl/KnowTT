@@ -11,7 +11,8 @@ target 'KnowTT' do
   pod 'Firebase/Database'
   pod 'Socket.IO-Client-Swift', '~> 14.0.0'
   pod 'SwiftSocket'
-  pod 'SCLAlertView'
+  pod 'SCLAlertView', :git => 'https://github.com/vikmeup/SCLAlertView-Swift'
   pod 'Canvas'
   pod 'JGProgressHUD'
+  pod 'TextFieldEffects' 
 end

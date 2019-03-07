@@ -68,11 +68,12 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - SCLAlertView (0.8)
+  - SCLAlertView (0.8.1)
   - Socket.IO-Client-Swift (14.0.0):
     - Starscream (~> 3.0.6)
   - Starscream (3.0.6)
   - SwiftSocket (2.0.2)
+  - TextFieldEffects (1.5.1)
 
 DEPENDENCIES:
   - Canvas
@@ -80,9 +81,10 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - JGProgressHUD
-  - SCLAlertView
+  - SCLAlertView (from `https://github.com/vikmeup/SCLAlertView-Swift`)
   - Socket.IO-Client-Swift (~> 14.0.0)
   - SwiftSocket
+  - TextFieldEffects
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -100,10 +102,19 @@ SPEC REPOS:
     - JGProgressHUD
     - leveldb-library
     - nanopb
-    - SCLAlertView
     - Socket.IO-Client-Swift
     - Starscream
     - SwiftSocket
+    - TextFieldEffects
+
+EXTERNAL SOURCES:
+  SCLAlertView:
+    :git: https://github.com/vikmeup/SCLAlertView-Swift
+
+CHECKOUT OPTIONS:
+  SCLAlertView:
+    :commit: 86ea7613c99cd4896765fabfa773b39b40bc8590
+    :git: https://github.com/vikmeup/SCLAlertView-Swift
 
 SPEC CHECKSUMS:
   Canvas: eb861e3b555d032648146c8ffda1a5dea40059ca
@@ -120,11 +131,12 @@ SPEC CHECKSUMS:
   JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  SCLAlertView: 6a77bb2edfc65e04dbe57725546cb4107a506b85
+  SCLAlertView: 9fea8ac145c0bd4989ef6abe1d3859b48f458986
   Socket.IO-Client-Swift: 21e6a8a23a7d367d5ddfab6cbbd3c679cf3c25d6
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   SwiftSocket: 6f4c9c63fbc5c1d61188936bb3c599fd546f40ae
+  TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
 
-PODFILE CHECKSUM: 4f84b4ff3950fc31d340a9d0e86bed5675e67fc1
+PODFILE CHECKSUM: 92a02c55403f901df28399d597995d639a97a006
 
 COCOAPODS: 1.6.0
