@@ -18,7 +18,7 @@ public class Server{
 
 	public static void main(String[] args) throws IOException{
 
-		ServerSocket ss = new ServerSocket(5056);
+		ServerSocket ss = new ServerSocket(8080);
 
 		//MOCK databases
 		List<Note> notesDB = Collections.synchronizedList(new ArrayList<Note>());
@@ -98,8 +98,6 @@ class ClientHandler extends Thread {
 			try {
 				Arrays.fill(bufr, (byte)0);
 				bufs = "";
-				// Ask user what he wants
-				//dos.writeUTF("HOLA\n");
 
 				// receive the answer from client
 				//received = dis.readUTF();
@@ -108,18 +106,20 @@ class ClientHandler extends Thread {
 				bufs = new String(bufr);
 				System.out.println(bufs);
 				request = gson.fromJson(bufs.trim(), Request.class);
-
+	
+				reqAck.setOpCode(request.getOpCode());
 
 				if(request.getOpCode().equals("EXIT")) {
 					System.out.println("Client " + this.s + " sends exit...");
 					System.out.println("Closing this connection.");
+					reqAck.setResult("ACK");
+					dos.write(gson.toJson(reqAck).getBytes());
 					this.s.close();
 					System.out.println("Connection closed");
 					break;
 				}
 
-				reqAck.setOpCode(request.getOpCode());
-				user_i = getUserIndex(request.getUserId());
+				//user_i = getUserIndex(request.getUserId());
 				//System.out.println(request.getUserId() + "\tindex: " + user_i);
 
 				switch(request.getOpCode()){
@@ -208,6 +208,7 @@ class ClientHandler extends Thread {
 					break;
 					default:
 						System.out.println("[ERROR] Unknown operation code");
+						reqAck.setResult("ERROR");
 				}
 
 				//System.out.println(received);
