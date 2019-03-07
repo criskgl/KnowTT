@@ -108,7 +108,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notification View" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CAZ-Z3-1o8">
-                                <rect key="frame" x="122" y="323" width="130" height="70"/>
+                                <rect key="frame" x="122" y="323" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -117,7 +117,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d2a-fr-fKn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="sectionIndexColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -232,7 +232,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaA-XB-ZVH">
-                                <rect key="frame" x="62" y="423" width="178" height="30"/>
+                                <rect key="frame" x="62" y="391" width="178" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fv0-vS-KED"/>
                                 </constraints>
@@ -242,7 +242,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9H1-mL-a6j">
-                                <rect key="frame" x="62" y="376" width="249" height="39"/>
+                                <rect key="frame" x="62" y="344" width="249" height="39"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="OQL-Dc-ma3"/>
@@ -259,7 +259,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXn-Lz-epz">
-                                <rect key="frame" x="62" y="329" width="249" height="39"/>
+                                <rect key="frame" x="62" y="297" width="249" height="39"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="39" id="CpR-m7-f5T"/>
@@ -274,9 +274,9 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UCSB mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="umJ-QL-zfy" customClass="MadokaTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="62" y="184" width="247" height="66"/>
+                                <rect key="frame" x="62" y="184" width="247" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="ojD-C6-1Eu"/>
+                                    <constraint firstAttribute="height" constant="50" id="ojD-C6-1Eu"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -291,9 +291,9 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SMW-Qv-rfy" customClass="MadokaTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="62" y="255" width="247" height="66"/>
+                                <rect key="frame" x="62" y="239" width="247" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="MT8-ZY-a0W"/>
+                                    <constraint firstAttribute="height" constant="50" id="MT8-ZY-a0W"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -437,6 +437,7 @@
                     <connections>
                         <outlet property="emailUser" destination="bhb-eY-U3j" id="A0G-xX-7Mv"/>
                         <outlet property="sendEmailButton" destination="yIh-1S-cqZ" id="jiZ-i3-WC5"/>
+                        <outlet property="userEmail" destination="bhb-eY-U3j" id="pUi-In-b0D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MSf-2U-sZU" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -607,7 +608,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NQZ-dH-7za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1415" y="-567"/>
+            <point key="canvasLocation" x="1279" y="-488"/>
         </scene>
         <!--Register View-->
         <scene sceneID="ASf-YG-aKp">
@@ -621,10 +622,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="UCSB mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kD8-Jl-W78" customClass="MadokaTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="62" y="235" width="250" height="66"/>
+                                <rect key="frame" x="62" y="224" width="250" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="2eG-Rk-9sN"/>
+                                    <constraint firstAttribute="height" constant="50" id="2eG-Rk-9sN"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -639,10 +640,10 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83c-bc-Myd" customClass="MadokaTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="62" y="317" width="250" height="66"/>
+                                <rect key="frame" x="62" y="290" width="250" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="P67-J4-XUS"/>
+                                    <constraint firstAttribute="height" constant="50" id="P67-J4-XUS"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -657,7 +658,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PNW-fD-miy">
-                                <rect key="frame" x="62" y="462" width="250" height="30"/>
+                                <rect key="frame" x="62" y="403" width="250" height="30"/>
                                 <color key="backgroundColor" red="0.092146717011928558" green="0.54225659370422363" blue="0.16153216361999512" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="2eB-15-4O1"/>
@@ -690,7 +691,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZQ-Ih-0vf">
-                                <rect key="frame" x="62" y="500" width="250" height="50"/>
+                                <rect key="frame" x="62" y="441" width="250" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1jX-xO-QjU"/>
                                 </constraints>
@@ -699,20 +700,10 @@
                                     <action selector="goToLogin:" destination="lAd-vk-xGv" eventType="touchUpInside" id="HyS-ha-T5v"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vg-7r-klt">
-                                <rect key="frame" x="102" y="578" width="171" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Lo9-zT-w1a"/>
-                                </constraints>
-                                <state key="normal" title="Resend verification email"/>
-                                <connections>
-                                    <action selector="verifyEmailTouched:" destination="lAd-vk-xGv" eventType="touchUpInside" id="CVJ-wT-gs2"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EId-Nx-hcU" customClass="MadokaTextField" customModule="TextFieldEffects">
-                                <rect key="frame" x="62" y="388" width="250" height="66"/>
+                                <rect key="frame" x="62" y="345" width="250" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="GhK-xJ-jlO"/>
+                                    <constraint firstAttribute="height" constant="50" id="GhK-xJ-jlO"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -726,6 +717,16 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Vg-7r-klt">
+                                <rect key="frame" x="102" y="499" width="171" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Lo9-zT-w1a"/>
+                                </constraints>
+                                <state key="normal" title="Resend verification email"/>
+                                <connections>
+                                    <action selector="verifyEmailTouched:" destination="lAd-vk-xGv" eventType="touchUpInside" id="CVJ-wT-gs2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.84911566972732544" blue="0.0041419398039579391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -742,9 +743,9 @@
                             <constraint firstItem="kZQ-Ih-0vf" firstAttribute="leading" secondItem="mFS-jB-1ee" secondAttribute="leading" constant="62" id="Twf-l8-pGm"/>
                             <constraint firstItem="BSP-zm-KNs" firstAttribute="trailing" secondItem="mFS-jB-1ee" secondAttribute="trailing" id="VEO-cq-FcQ"/>
                             <constraint firstItem="opU-t5-iF2" firstAttribute="leading" secondItem="5ki-UM-YPT" secondAttribute="leading" id="VT0-HG-gGJ"/>
-                            <constraint firstItem="5Vg-7r-klt" firstAttribute="top" secondItem="kZQ-Ih-0vf" secondAttribute="bottom" constant="28" id="W68-T9-Sc8"/>
+                            <constraint firstItem="5Vg-7r-klt" firstAttribute="top" secondItem="kZQ-Ih-0vf" secondAttribute="bottom" constant="8" id="W68-T9-Sc8"/>
                             <constraint firstItem="mFS-jB-1ee" firstAttribute="trailing" secondItem="83c-bc-Myd" secondAttribute="trailing" constant="63" id="YRu-od-fpj"/>
-                            <constraint firstItem="kD8-Jl-W78" firstAttribute="top" secondItem="nfK-sA-pl6" secondAttribute="bottom" constant="36" id="cAB-nW-zMA"/>
+                            <constraint firstItem="kD8-Jl-W78" firstAttribute="top" secondItem="nfK-sA-pl6" secondAttribute="bottom" constant="25" id="cAB-nW-zMA"/>
                             <constraint firstItem="EId-Nx-hcU" firstAttribute="top" secondItem="83c-bc-Myd" secondAttribute="bottom" constant="5" id="dCt-lU-seE"/>
                             <constraint firstItem="mFS-jB-1ee" firstAttribute="trailing" secondItem="EId-Nx-hcU" secondAttribute="trailing" constant="63" id="fTG-1G-tBS"/>
                             <constraint firstAttribute="trailing" secondItem="opU-t5-iF2" secondAttribute="trailing" id="hhe-sH-44y"/>
@@ -786,7 +787,7 @@
         <image name="userIcon32px" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ni7-hZ-ffR"/>
-        <segue reference="6WI-0j-v91"/>
+        <segue reference="xIF-Bo-XHZ"/>
+        <segue reference="OKr-BG-a1V"/>
     </inferredMetricsTieBreakers>
 </document>

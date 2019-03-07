@@ -83,14 +83,6 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         //Invoking TCP client
         client = TCPClient(address: "142.93.204.52", port: 8080)
         super.viewDidLoad()
-        //Connect to server
-        guard let client = client else{return}
-        switch client.connect(timeout: 10) {
-        case .success:
-            appendToTextField(string: "Connected to host")
-        case .failure(let error):
-            appendToTextField(string: String(describing: error))
-        }
         #warning ("Implement security handshake")
     
     }

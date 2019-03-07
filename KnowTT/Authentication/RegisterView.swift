@@ -149,9 +149,9 @@ class RegisterView: UIViewController{
                          password: self.userPassword.text!)
                          }
                          */
-                        if error != nil{//ERROR REGISTERING USER
+                        if error != nil{//--ERROR REGISTERING USER
                             SCLAlertView().showError("Registration Error", subTitle: "There has been a problem adding new member. Check if you already have a KnowT account")
-                        }else{//NO ERROR REGISTERING USER
+                        }else{//--NO ERROR REGISTERING USER
                             Auth.auth().currentUser?.sendEmailVerification { (error) in
                                 if error != nil { //ERROR
                                     SCLAlertView().showError("Email Verification", subTitle: "We could not send the verification email")
@@ -163,7 +163,6 @@ class RegisterView: UIViewController{
                                     self.verifyEmailButton.isHidden = false
                                 }
                             }
-                            
                         }
                         guard (authResult?.user) != nil else { return }
                     }
@@ -184,6 +183,30 @@ class RegisterView: UIViewController{
         userConfirmPassword.text = ""
         //hide loader
         hud.dismiss()
+        //close connection with OWN servers
+        //notify registration OWN servers
+        do{
+            print("\tPerforming disconnection")
+            let exitRequest = UserNote()
+            exitRequest.buildNote("EXIT", self.userMail.text!, "", "", "")
+            let json = exitRequest.getJson()
+            let dataToSend = "\(json)"
+            let response = self.sendJson(self, dataToSend)
+            print("\t HERE: \(response)")
+            let jsonData = Data(response.utf8)
+            let decoder = JSONDecoder()
+            if(response != "[ERROR][sendJson]"){//Own server did respond
+                let ackJsonDecoded = try decoder.decode(ACKRegisterDecodedStruct.self, from: jsonData)
+                if(ackJsonDecoded.opCode == "EXIT" && ackJsonDecoded.result == "ACK"){//server notified of closed connection
+                    print("\tserver closed connection")
+                }else if (ackJsonDecoded.opCode == "EXIT" && ackJsonDecoded.result != "ACK"){//server notified of error closing connection
+                    print("\tserver could not close connection")
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
     }
     
     
@@ -238,6 +261,7 @@ class RegisterView: UIViewController{
         return String(bytes: response, encoding: .ascii)
     }
     
+    //REGEX functions
     private func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@ucsb+\\.edu"
         
