@@ -213,6 +213,15 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         self.userMap.setRegion(viewRegion, animated: true)
         self.userMap.showsUserLocation = true
         
+        // create a 3D Camera
+        let mapCamera = MKMapCamera()
+        mapCamera.centerCoordinate = (locations.last?.coordinate)!
+        mapCamera.pitch = 60
+        mapCamera.altitude = 100 // example altitude
+        mapCamera.heading = 0
+        
+        // set the camera property
+        self.userMap.camera = mapCamera
         
         //Save current lat & long
         UserDefaults.standard.set(userLocation?.coordinate.latitude, forKey: "LAT")

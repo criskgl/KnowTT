@@ -169,8 +169,10 @@ class RegisterSignView: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //get the destination controller and cast it to your detail class
-        let userHomeController  = segue.destination as!  UserHomeViewController
-        userHomeController.client = self.client
+        if(segue.identifier == "RegisterSignToUserHome"){
+            let userHomeController  = segue.destination as?  UserHomeViewController
+            userHomeController?.client = self.client
+        }
     }
     
     func createAlert(title:String, message:String){
