@@ -51,6 +51,7 @@ class RegisterSignView: UIViewController {
     }
     //Actions from Storyboard
 
+
     
     @IBAction func signInTouched(_ sender: Any) {
         guard //Take care of not long enough
@@ -90,7 +91,6 @@ class RegisterSignView: UIViewController {
                         self.emailToVerify = self.userMail.text!
                         
                         emailNotVerifiedAlert.addButton("Send Verification E-mail") {
-                            //self.performSegue(withIdentifier: "toForgotPasswordView", sender: self)
                             sendVerificationEmail(withEmail: self.emailToVerify, withPassword: self.passToVerify)
                         }
                         emailNotVerifiedAlert.showWarning("E-mail verification required", subTitle: "If you have already verified it try again in 5 seconds")

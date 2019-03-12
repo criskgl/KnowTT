@@ -10,9 +10,12 @@ import Foundation
 import UIKit
 import FirebaseAuth
 import SCLAlertView
+import TextFieldEffects
+import JGProgressHUD
 
 class ForgotPassword: UIViewController {
-    @IBOutlet weak var emailUser: UITextField!
+    
+    @IBOutlet weak var emailUser: MadokaTextField!
     @IBOutlet weak var sendEmailButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,9 @@ class ForgotPassword: UIViewController {
             SCLAlertView().showWarning("Not a ucsb.edu email", subTitle: "")
             return
         }
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Sending reset password email..."
+        hud.show(in: self.view)
         Auth.auth().sendPasswordReset(withEmail: emailUser.text!) { error in
             if error != nil {//ERROR
                 SCLAlertView().showError("Error sending password reset email", subTitle: "The email provided might not be in our database")
@@ -41,6 +47,7 @@ class ForgotPassword: UIViewController {
                 SCLAlertView().showSuccess("Email to reset password sent", subTitle: "")
             }
         }
+        hud.dismiss()
     }
     
     private func isValidEmail(testStr:String) -> Bool {
