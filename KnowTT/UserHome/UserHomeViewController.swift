@@ -16,6 +16,14 @@ import MapKit
 import SCLAlertView
 import JGProgressHUD
 
+struct GetNoteDecodedStruct: Codable {
+    var creationTime: String
+    var latitude: Double
+    var longitude: Double
+    var message: String
+    var userId: String?
+}
+
 struct PostNoteDecodedStruct: Codable {
     var latitude: String
     var longitude: String
@@ -272,6 +280,7 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
         print(dataToSend)
         //4.Send the request and recieve first response
         var response = self.sendJson(self, dataToSend)
+        print("\t FIRST RESPONSE:\(response)")
         #warning ("This folowing line is for testing")
         appendToTextField(string: response)
         var moreNotes = self.pinNoteAndCheckForMore(fromStringJson: response)
@@ -283,23 +292,26 @@ class UserHomeViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     func pinNoteAndCheckForMore(fromStringJson json: String) -> Bool{
+        
         //put json in required format for decoder
         let jsonData = Data(json.utf8)
         //create decoder
         let decoder = JSONDecoder()
         var moreNotes = true
+        
         do {
+            print("\t[pinNoteAndCheckForMore]")
             //Initialize Struct to save data
-            let ackJsonDecoded = try decoder.decode(PostNoteDecodedStruct.self, from: jsonData)
+            let ackJsonDecoded = try decoder.decode(GetNoteDecodedStruct.self, from: jsonData)
+            print("\t repsonse decoded")
             //Check if we have final end marking note
             if(ackJsonDecoded.message == "[END]"){
+                print("\t [END] in get operation RECEIVED")
                 moreNotes = false
             }else{//If there are more notes...
                 //Get location from note
-                let latitudeEffectiveValue = (ackJsonDecoded.latitude as NSString).doubleValue
-                let longitudeEffectiveValue = (ackJsonDecoded.longitude as NSString).doubleValue
                 
-                self.pinNote(withText: ackJsonDecoded.message, inLatitude: latitudeEffectiveValue, inLongitud: longitudeEffectiveValue)
+                self.pinNote(withText: ackJsonDecoded.message, inLatitude: ackJsonDecoded.latitude, inLongitud: ackJsonDecoded.longitude)
             }
         }catch {
             print(error.localizedDescription)

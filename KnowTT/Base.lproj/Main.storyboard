@@ -182,7 +182,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFm-5Y-YVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1561" y="-628"/>
+            <point key="canvasLocation" x="-1570" y="-539"/>
         </scene>
         <!--Register Sign View-->
         <scene sceneID="tne-QT-ifu">
@@ -813,7 +813,7 @@
         <image name="userIcon32px" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6WI-0j-v91"/>
-        <segue reference="zoR-V5-yOB"/>
+        <segue reference="JqF-QY-wGP"/>
+        <segue reference="xIF-Bo-XHZ"/>
     </inferredMetricsTieBreakers>
 </document>
